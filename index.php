@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<title>
-		Sistema de inventario de Alfacero Hual CA - vctr90
+		Sistema de inventario de Alfacero Hual CA - vctr
 	</title>
 	<head>
-
+	
 	</head>
 	<body>
-		<p> este es un parrafo</p>
+		
 	</body>
 </html>
