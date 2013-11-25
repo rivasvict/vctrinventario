@@ -12,6 +12,16 @@ class SQL{
 	public $seleccion	= '*'		;
 	public $tablaTarget	= 'Material'	;*/
 
+	protected function cadenaCondicion($condicion){
+		if(gettype($condicion) == 'array'){
+			$condicion = self::construcCadena($condicion,true);
+			$condicion = self::definicion($condicion); 
+		}else{
+			$condicion = self::definicion($condicion); 	
+		}
+		return $condicion;
+	}
+
 	protected function construcCadena($array,$condicionM){
 		if($condicionM == true){
 			$cadena = implode(' and ', $array);
@@ -28,20 +38,15 @@ class SQL{
 		return $definicion;
 	}
 
-	public function sqlSelect($seleccion,$tablaTarget,$campoTarget){
+	public function sqlSelect($seleccion,$tablaTarget,$condicion){
 	
 		if(gettype($seleccion) == 'array'){
 			$seleccion = self::construcCadena($seleccion,false); 
 		}
-		if($campoTarget != ''){
-			if(gettype($campoTarget) == 'array'){
-				$where = self::construcCadena($campoTarget,true);
-				$condicion = self::definicion($where); 
-			}else{
-				$condicion = self::definicion($campoTarget); 	
-			}
+		if($condicion != ''){	
+			$condicion = self::cadenaCondicion($condicion);
 		}
-
+		
 		$query = "select $seleccion from $tablaTarget$condicion;";
 
 		return $query;	
@@ -64,12 +69,7 @@ class SQL{
 		if(gettype($campos) == 'array'){
 			$campos = self::construcCadena($campos,false);
 		}
-		if(gettype($condicion) == 'array'){
-			$condicion = self::construcCadena($condicion,true);
-			$condicion = self::definicion($condicion);
-		}else{
-			$condicion = self::definicion($condicion);
-		}
+		$condicion = self::cadenaCondicion($codicion);
 
 		$query = "update $tablaTarget set $campos$condicion;";
 		return $query;
