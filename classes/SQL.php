@@ -24,7 +24,7 @@ class SQL{
 	//funcion construcCadena funcion que recibe un arreglo y devuelve una cadena separada por comas
 
 	protected function definicion($cad){
-		$definicion = 'where '.$cad;
+		$definicion = ' where '.$cad;
 		return $definicion;
 	}
 
@@ -42,7 +42,7 @@ class SQL{
 			}
 		}
 
-		$query = "select $seleccion from $tablaTarget $condicion;";
+		$query = "select $seleccion from $tablaTarget$condicion;";
 
 		return $query;	
 
@@ -60,8 +60,19 @@ class SQL{
 		return $query;
 	}
 
-	public function sqlUpdate($tablaTarget,$campos,$valores){
-		//CREAR SQLUPDATE
+	public function sqlUpdate($tablaTarget,$campos,$condicion){
+		if(gettype($campos) == 'array'){
+			$campos = self::construcCadena($campos,false);
+		}
+		if(gettype($condicion) == 'array'){
+			$condicion = self::construcCadena($condicion,true);
+			$condicion = self::definicion($condicion);
+		}else{
+			$condicion = self::definicion($condicion);
+		}
+
+		$query = "update $tablaTarget set $campos$condicion;";
+		return $query;
 	}
 
 }
@@ -69,9 +80,10 @@ class SQL{
 $q = new SQL;
 echo $q->sqlSelect([idMaterial,Existencia,Nombre],'Material','').'<br>';
 echo $q->sqlSelect('*','Material','').'<br>';
-echo $q->sqlSelect('idMaterial','Material',['idMaterial = 1']).'<br>';
+echo $q->sqlSelect('idMaterial','Material',['idMaterial = 1','Existencia = 10']).'<br>';
 echo $q->sqlSelect('idMaterial','Material','idMaterial = 1').'<br>';
 echo $q->sqlSelect('idMaterial','Material','idMaterial = 1').'<br>';
+echo $q->sqlInsert('Material',[idMaterial,Existencia,Nombre],['null',5,'"E"']).'<br>';
 echo $q->sqlInsert('Material',[Existencia,Nombre],[15,D]).'<br>';
-echo $q->sqlInsert('Material',[Existencia,Nombre],[15,D]).'<br>';
+echo $q->sqlUpdate('Material',['Existencia = 20','Nombre = "F"'],'idMaterial = 5');
 ?>
