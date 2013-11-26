@@ -8,35 +8,42 @@
 #########################################################
 */
 class SQL{
-
 	/*public $tipoOperacion 	= 'S'		;
 	public $seleccion	= '*'		;
 	public $tablaTarget	= 'Material'	;*/
 
-	public function construcCadena($array){
-		$cadena = implode(',', $array);
+	public function construcCadena($array,$condicionM){
+		if($condicionM == true){
+			$cadena = implode(' and ', $array);
+		}else{
+			$cadena = implode(',', $array);
+		}
 		return $cadena;
 	}
 
 	//funcion construcCadena funcion que recibe un arreglo y devuelve una cadena separada por comas
 
-	public function definicion($cadena){
-		$definicion = 'where'// terminar de crear condicion de selecion
+	public function definicion($cad){
+		$definicion = 'where '.$cad;
+		return $definicion;
 	}
 
 	public function sqlInterfaz($tipoOperacion,$seleccion,$tablaTarget,$campoTarget){
 	
 		if($tipoOperacion == 'S'){
 			if(gettype($seleccion) == 'array'){
-				$seleccion = self::construcCadena($seleccion); 
+				$seleccion = self::construcCadena($seleccion,false); 
 			}
-		if($campoTarget != null){
-			$condicion = self::construcCadena($campoTarget);
-		}
+			if($campoTarget != ''){
+				if(gettype($campoTarget) == 'array'){
+					$where = self::construcCadena($campoTarget,true);
+					$condicion = self::definicion($where); 
+				}else{
+					$condicion = self::definicion($campoTarget); 	
+				}
+			}
 			$query = "select $seleccion from $tablaTarget $condicion;";
 		}
-
-		
 
 		return $query;	
 
@@ -45,7 +52,11 @@ class SQL{
 
 	}
 	$q = new SQL;
-	echo $q->sqlInterfaz('S',[idMaterial,Existencia,Nombre],'Material',null).'<br>';
-	echo $q->sqlINterfaz('S','*','Material',null);
-	echo $q->sqlINterfaz('S','','Material',['idMaterial = 1']);
+	echo $q->sqlInterfaz('S',[idMaterial,Existencia,Nombre],'Material','').'<br>';
+	echo $q->sqlINterfaz('S','*','Material','').'<br>';
+	echo $q->sqlINterfaz('S','idMaterial','Material',['idMaterial = 1']).'<br>';
+	echo $q->sqlINterfaz('S','idMaterial','Material','idMaterial = 1').'<br>';
+	echo $q->sqlINterfaz('S','idMaterial','Material','idMaterial = 1').'<br>';
+
+
 ?>
