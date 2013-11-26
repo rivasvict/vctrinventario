@@ -12,7 +12,7 @@ class SQL{
 	public $seleccion	= '*'		;
 	public $tablaTarget	= 'Material'	;*/
 
-	public function construcCadena($array,$condicionM){
+	protected function construcCadena($array,$condicionM){
 		if($condicionM == true){
 			$cadena = implode(' and ', $array);
 		}else{
@@ -23,40 +23,55 @@ class SQL{
 
 	//funcion construcCadena funcion que recibe un arreglo y devuelve una cadena separada por comas
 
-	public function definicion($cad){
+	protected function definicion($cad){
 		$definicion = 'where '.$cad;
 		return $definicion;
 	}
 
-	public function sqlInterfaz($tipoOperacion,$seleccion,$tablaTarget,$campoTarget){
+	public function sqlSelect($seleccion,$tablaTarget,$campoTarget){
 	
-		if($tipoOperacion == 'S'){
-			if(gettype($seleccion) == 'array'){
-				$seleccion = self::construcCadena($seleccion,false); 
-			}
-			if($campoTarget != ''){
-				if(gettype($campoTarget) == 'array'){
-					$where = self::construcCadena($campoTarget,true);
-					$condicion = self::definicion($where); 
-				}else{
-					$condicion = self::definicion($campoTarget); 	
-				}
-			}
-			$query = "select $seleccion from $tablaTarget $condicion;";
+		if(gettype($seleccion) == 'array'){
+			$seleccion = self::construcCadena($seleccion,false); 
 		}
+		if($campoTarget != ''){
+			if(gettype($campoTarget) == 'array'){
+				$where = self::construcCadena($campoTarget,true);
+				$condicion = self::definicion($where); 
+			}else{
+				$condicion = self::definicion($campoTarget); 	
+			}
+		}
+
+		$query = "select $seleccion from $tablaTarget $condicion;";
 
 		return $query;	
 
 	}
-	
 
+	public function sqlInsert($tablaTarget,$campos,$valores){
+		if(gettype($campos) == 'array'){
+			$campos = self::construcCadena($campos,false); 
+		}
+		if(gettype($valores) == 'array'){
+			$valores = self::construcCadena($valores,false); 
+		}
+
+		$query = "insert into $tablaTarget ($campos) values ($valores);";
+		return $query;
 	}
-	$q = new SQL;
-	echo $q->sqlInterfaz('S',[idMaterial,Existencia,Nombre],'Material','').'<br>';
-	echo $q->sqlINterfaz('S','*','Material','').'<br>';
-	echo $q->sqlINterfaz('S','idMaterial','Material',['idMaterial = 1']).'<br>';
-	echo $q->sqlINterfaz('S','idMaterial','Material','idMaterial = 1').'<br>';
-	echo $q->sqlINterfaz('S','idMaterial','Material','idMaterial = 1').'<br>';
 
+	public function sqlUpdate($tablaTarget,$campos,$valores){
+		//CREAR SQLUPDATE
+	}
 
+}
+//Test area
+$q = new SQL;
+echo $q->sqlSelect([idMaterial,Existencia,Nombre],'Material','').'<br>';
+echo $q->sqlSelect('*','Material','').'<br>';
+echo $q->sqlSelect('idMaterial','Material',['idMaterial = 1']).'<br>';
+echo $q->sqlSelect('idMaterial','Material','idMaterial = 1').'<br>';
+echo $q->sqlSelect('idMaterial','Material','idMaterial = 1').'<br>';
+echo $q->sqlInsert('Material',[Existencia,Nombre],[15,D]).'<br>';
+echo $q->sqlInsert('Material',[Existencia,Nombre],[15,D]).'<br>';
 ?>
