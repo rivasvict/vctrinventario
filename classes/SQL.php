@@ -14,7 +14,7 @@ class SQL{
 
 	protected function cadenaCondicion($condicion){
 		if(gettype($condicion) == 'array'){
-			$condicion = self::construcCadena($condicion,true);
+			$condicion = self::construcCadena($condicion,'verdadero');
 			$condicion = self::definicion($condicion); 
 		}else{
 			$condicion = self::definicion($condicion); 	
@@ -23,10 +23,13 @@ class SQL{
 	}
 
 	protected function construcCadena($array,$condicionM){
-		if($condicionM == true){
+		if($condicionM == 'verdadero'){
 			$cadena = implode(' and ', $array);
-		}else{
+		}else if($condicionM == 'falso'){
 			$cadena = implode(',', $array);
+		}else{
+			$cadena = implode(" $condicionM ", $array);
+			$cadena = str_replace('select','(select',$cadena);
 		}
 		return $cadena;
 	}
@@ -41,7 +44,7 @@ class SQL{
 	public function sqlSelect($seleccion,$tablaTarget,$condicion){
 	
 		if(gettype($seleccion) == 'array'){
-			$seleccion = self::construcCadena($seleccion,false); 
+			$seleccion = self::construcCadena($seleccion,'falso'); 
 		}
 		if($condicion != ''){	
 			$condicion = self::cadenaCondicion($condicion);
@@ -55,10 +58,10 @@ class SQL{
 
 	public function sqlInsert($tablaTarget,$campos,$valores){
 		if(gettype($campos) == 'array'){
-			$campos = self::construcCadena($campos,false); 
+			$campos = self::construcCadena($campos,'falso'); 
 		}
 		if(gettype($valores) == 'array'){
-			$valores = self::construcCadena($valores,false); 
+			$valores = self::construcCadena($valores,'falso'); 
 		}
 
 		$query = "insert into $tablaTarget ($campos) values ($valores);";
@@ -67,11 +70,18 @@ class SQL{
 
 	public function sqlUpdate($tablaTarget,$campos,$condicion){
 		if(gettype($campos) == 'array'){
-			$campos = self::construcCadena($campos,false);
+			$campos = self::construcCadena($campos,'falso');
 		}
 		$condicion = self::cadenaCondicion($codicion);
 
 		$query = "update $tablaTarget set $campos$condicion;";
+		return $query;
+	}
+
+	public function sqlOperaciones($arrayValor,$operacion){
+		$arrayValor = self::construcCadena($arrayValor,$operacion);
+		$arrayValor = str_replace(';',')',$arrayValor);
+		$query = "select $arrayValor;";
 		return $query;
 	}
 
@@ -85,5 +95,8 @@ echo $q->sqlSelect('idMaterial','Material','idMaterial = 1').'<br>';
 echo $q->sqlSelect('idMaterial','Material','idMaterial = 1').'<br>';
 echo $q->sqlInsert('Material',[idMaterial,Existencia,Nombre],['null',5,'"E"']).'<br>';
 echo $q->sqlInsert('Material',[Existencia,Nombre],[15,D]).'<br>';
-echo $q->sqlUpdate('Material',['Existencia = 20','Nombre = "F"'],'idMaterial = 5');
+echo $q->sqlUpdate('Material',['Existencia = 20','Nombre = "F"'],'idMaterial = 5').'<br>';
+echo $q->sqlOperaciones([20,1,3,7],'+').'<br>';
+echo $q->sqlOperaciones([$q->sqlSelect('Existencia','Material',['idMaterial = 1']),7],'+').'<br>';
+
 ?>
