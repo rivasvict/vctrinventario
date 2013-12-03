@@ -30,13 +30,18 @@ class SQL{
 		}else{
 			if(gettype($condicionM) == 'array'){
 count($subarray);
-				for($i=0;$i<(count($array)*2)-1;$i++){
-					/*for($j=0;$j<count($condicionM)+2;$j++){
-						$subCondicion[$j+1]=$condicionM[$j];
-					}*/
-					$j=$i+1;
-					$subarray[$i]=$array[$i];
-					$subarray[$j]=$condicionM[$i];
+//				for($i=0;$i=2;$i++){}
+				for($j=0;$j=count($subarray);$j++){
+					//if($i==0){
+					//	$subarray[$j]=$array[$j];
+					//	$subarray[$j+1]=$condicionM[$j];
+						//echo $j;//var_dump($condicionM[$j]);
+					//}else{
+					//	$j=$j+1;
+						$subarray[$j=$j+1]=$array[$j];
+						$subarray[$j+1]=$condicionM[$j];
+						//echo $j;
+					//}
 				}
 				var_dump($subarray);
 			}
