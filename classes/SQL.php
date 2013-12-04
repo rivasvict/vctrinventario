@@ -29,19 +29,15 @@ class SQL{
 			$cadena = implode(',', $array);
 		}else{
 			if(gettype($condicionM) == 'array'){
-count($subarray);
 //				for($i=0;$i=2;$i++){}
-				for($j=0;$j=count($subarray);$j++){
-					//if($i==0){
-					//	$subarray[$j]=$array[$j];
-					//	$subarray[$j+1]=$condicionM[$j];
-						//echo $j;//var_dump($condicionM[$j]);
-					//}else{
-					//	$j=$j+1;
-						$subarray[$j=$j+1]=$array[$j];
-						$subarray[$j+1]=$condicionM[$j];
-						//echo $j;
-					//}
+				$i=0;
+				for($j=0;$j<((count($array)*2)-1);$j++){
+					$subarray[$j]=$array[$i];//echo $j;
+					$j++;
+					if($j!=((count($array)*2)-1)){
+						$subarray[$j]=$condicionM[$i];
+						$i++;
+					}
 				}
 				var_dump($subarray);
 			}
@@ -115,5 +111,5 @@ echo $q->sqlInsert('Material',[Existencia,Nombre],[15,D]).'<br>';
 echo $q->sqlUpdate('Material',['Existencia = 20','Nombre = "F"'],'idMaterial = 5').'<br>';
 echo $q->sqlOperaciones([20,1,3,7],'+').'<br>';
 echo $q->sqlOperaciones([$q->sqlSelect('Existencia','Material',['idMaterial = 1']),7,$q->sqlSelect('Existencia','Material','idMaterial = 1')],'+').'<br>';
-echo $q->sqlOperaciones([20,1,3,7],['+','-']).'<br>';
+echo $q->sqlOperaciones([20,1,3,7],['+','-','/']).'<br>';
 ?>
