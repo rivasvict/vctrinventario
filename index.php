@@ -7,6 +7,8 @@
 	
 	</head>
 	<body>
-		
+		<div id='contenido'>
+			<?php include 'contenido.php';?>
+		</div>
 	</body>
 </html>
