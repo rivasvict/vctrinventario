@@ -1,1 +1,3 @@
-Hola mundo
+<? 
+include 'contenidos/editorProducto.php';
+?>
