@@ -18,6 +18,6 @@
 
 	<span>Comentario: 				</span><textarea id='comentariosNuevoProducto' rows="4" cols="50" class='llenado' ng-model='pro.comentario' required/></textarea>
 
-	<button ng-click='procesar()' ng-disable="form.invalid || sincambio(pro)">Enviar</button>
-	<button ng-click='reset()' ng-disable='sincambio(pro)'>Resetear</button>
+	<button ng-click='procesar()' ng-disabled='form.$invalid || sincambio(pro)'>Enviar</button>
+	<button ng-click='reset()' ng-disabled='sincambio(pro)'>Resetear</button>
 </form>
