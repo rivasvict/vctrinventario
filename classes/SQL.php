@@ -113,5 +113,5 @@ echo $q->sqlInsert('Material',[Existencia,Nombre],[15,D]).'<br>';
 echo $q->sqlUpdate('Material',['Existencia = 20','Nombre = "F"'],'idMaterial = 5').'<br>';
 echo $q->sqlOperaciones([20,1,3,7],'+').'<br>';
 echo $q->sqlOperaciones([$q->sqlSelect('Existencia','Material',['idMaterial = 1']),7,$q->sqlSelect('Existencia','Material','idMaterial = 1')],'+').'<br>';
-echo $q->sqlOperaciones([20,1,3,7],['+','-','/']).'<br>';*/
+echo $q->sqlOperaciones([20,1,3,7],['+','-','/']).'<br>';
 ?>

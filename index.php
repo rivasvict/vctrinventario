@@ -33,6 +33,9 @@
 	<body>
 		<div id='conten' ng-controller='contenido'>
 			<? include 'contenido.php';?>
+			<div id='preview'>
+				<? include 'includes/preview.php'?>
+			<div>
 		</div>
 	</body>
 </html>

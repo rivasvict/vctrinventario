@@ -4,19 +4,17 @@ function contenido($scope) {
 	$scope.copia = {};
 
 	$scope.reset = function(){
-		$scope.pro = angular.copy($scope.copia);	
+		$scope.fobject = angular.copy($scope.copia);	
 	};
 
-	$scope.procesar = function(pro){
-		$scope.copia = angular.copy(pro);
+	$scope.procesar = function(fobject){
+		$scope.copia = angular.copy(fobject);
 	};
 
-	$scope.sincambio = function(pro){
-		return angular.equals(pro, $scope.copia);
+	$scope.sincambio = function(fobject){
+		return angular.equals(fobject, $scope.copia);
 	};
 
 	$scope.reset();
 
 }
-
-

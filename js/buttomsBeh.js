@@ -1,7 +1,6 @@
 function preview(arr){
-	alert (arr);
+	$('#preview').show();
 }
 
 function cancel(target){
-	alert (target);
 }
