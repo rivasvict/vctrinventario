@@ -18,3 +18,5 @@ function contenido($scope) {
 	$scope.reset();
 
 }
+
+

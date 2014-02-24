@@ -1,5 +1,5 @@
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
-<script type="text/javascript" src='js/interface.js'></script>
+<? include 'includes/angular.php';?>
+<? include 'includes/customjs.php';?>
 <form name='form' novalidate>
 	<span>Nombre del producto: 			</span><input type='text' id='nombreProducto' class='vllenado' ng-model='pro.nombreProducto' required/>
 
