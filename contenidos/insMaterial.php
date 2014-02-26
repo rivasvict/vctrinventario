@@ -7,13 +7,13 @@ $form8 = "";
 $form10 = "";
 $_POST['collector'] = 'yes';
 $va = 'text';
-$ve = 'options[Fabricacion alambre]';
+$ve = 'uSelect[1]';
 if($_POST['collector']=='yes'){
 	$form2 = "ng-init = 'fobject.2 = ".'"'.$va.'"'."'";
 	$form4 = "ng-init = 'fobject.4 = ".'"'.$va.'"'."'";
-	$form6 = "ng-init = 'fobject.6 = ".'"'.$ve.'"'."'";
+	$form6 = 'ng-init = "fobject.6 = '."".$ve."".'"';
 	$form8 = "ng-init = 'fobject.8 = ".'"'.$ve.'"'."' ng-options = 'option.value for option in options'";
-	echo $form8;	
+	echo $form6;
 	$form10 = "ng-init = 'fobject.10 = ".'"'.$ve.'"'."'";
 }
 ?>
@@ -21,10 +21,10 @@ if($_POST['collector']=='yes'){
 <form name='form' novalidate><input type="hidden" ng-model="fobject.1" ng-init="fobject.1 = 'Nombre del material: '">
 <span>Nombre del material: </span><input type='text' name='nombreMaterial' id='nMat' class='frm' <? echo $form2?> ng-model="fobject.2" required>
 <span>Código del material: </span><input type='text' name='codigoMaterial' id='cMat' class='frm'<? echo $form4?>  ng-model="fobject.4" required>
-<span>Unidad: </span><select name='unidad' id='unit' class='frm' <? echo $form6?> ng-model="fobject.6" required>
-    <option name=''></option>
+<span>Unidad: </span><select name='unidad' id='unit' class='frm' ng-options="option.value for option in uSelect" <? echo $form6?> ng-model="fobject.6" required>
+    <!--<option name=''></option>
     <option name='Kg - Kilogramos'>Kg - Kilogramos</option>
-    <option name='Lts - Litros'>Lts - Litros</option>
+    <option name='Lts - Litros'>Lts - Litros</option>-->
 </select> 
 <span>Proposito del material: </span><select name='propMaterial' id='propM' class='frm' <? echo $form8?> ng-model="fobject.8" required>
     <option name=''></option>
