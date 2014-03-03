@@ -17,6 +17,6 @@ function contenido($scope) {
 
 	$scope.reset();
 
-	$scope.uSelect = [{value:'Kilogramos - Kgs'},{value:'Litros - Lts'}];
+	$scope.uSelect = [{"value":0,"text":"Kilogramos - Kgs"},{"value":1,"text":"Litros - Lts"}];
 
 }
