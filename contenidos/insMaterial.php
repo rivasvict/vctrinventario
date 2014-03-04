@@ -7,7 +7,7 @@ $form8 = "";
 $form10 = "";
 $_POST['collector'] = 'no';
 $va = 'text';
-$ve = 'uSelect[1]';
+$ve = 'uSelect[1].value';
 if($_POST['collector']=='yes'){
 	$form2 = "ng-init = 'fobject.2 = ".'"'.$va.'"'."'";
 	$form4 = "ng-init = 'fobject.4 = ".'"'.$va.'"'."'";
@@ -46,30 +46,22 @@ $fob9 = "Clasificación del material: ";
 	<span>
 		<? echo $fob5?>
 	</span>
-	<select <? echo $form6?> name='unidad' id='unit' class='frm' ng-options="option as option.text for option in uSelect" ng-model="fobject.6" required>
+	<select <? echo $form6?> name='unidad' id='unit' class='frm' ng-options="option.value as option.value for option in uSelect" ng-model="fobject.6" required>
     	</select> 
 
         <? echo $hit1.'7'.$hit2.'7'.$hit3.$fob7.$hit4;?>
 	<span>
 		<? echo $fob7?>
 	</span>
-	<select name='propMaterial' id='propM' class='frm' <? echo $form8?> ng-model="fobject.8" required>
-		<option name=''></option>
-		<option name='Fabricacion alambre' value='Fabricacion alambre'>Fabricacion alambre</option>
-		<option name='Fabricacon electrodos'>Fabricacon electrodos</option>
+	<select <? echo $form8?> ame='propMaterial' id='propM' class='frm' ng-options="option.value as option.value for option in prSelect" ng-model="fobject.8" required>
 	</select>
 
         <? echo $hit1.'9'.$hit2.'9'.$hit3.$fob9.$hit4;?>
 	<span>
 		<? echo $fob9?>
 	</span>
-	<select name='clasMaterial' id='clasM' class='frm' <? echo $form10?> ng-model="fobject.91" required>
-    		<option name=''></option>
-    		<option name='A - Cobrizantes' selected="selected">A - Cobrizantes</option>
-    		<option name='E - Revestimiento seco'>E - Revestimiento seco</option>
-    		<option name='E - Aglutinantes'>E - Aglutinantes</option>
-    		<option name='Alambre'>Alambre</option>
-	</select>
+	<select  <? echo $form10?> name='clasMaterial' id='clasM' class='frm' ng-options="option.value as option.value for option in clSelect" ng-model="fobject.91" required>
+ 	</select>
 </div>
 <!-- AREA DE PARAMETROS PARA BOTONES-->
 <?

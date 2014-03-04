@@ -1,5 +1,9 @@
 function preview(arr){
-	$('#preview').show();
+	$('.preview').show();
+}
+
+function pBack(){
+	$('.preview').hide();
 }
 
 function cancel(target){

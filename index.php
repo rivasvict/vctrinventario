@@ -4,6 +4,9 @@
 		Sistema de inventario de Alfacero Hual CA - vctr
 	</title>
 	<head>
+
+		<meta charset="UTF-8">
+
 		<!-- Styles zone -->
 
 			<!-- Bootstrap -->
@@ -17,6 +20,10 @@
 		<!-- Javascripts Zone -->
 
 			<!-- dependencies -->
+
+				<!-- jQuery-->
+
+					<? include 'includes/jquery.php';?>
 
 				<!-- Angularjs -->
 
@@ -33,7 +40,7 @@
 	<body>
 		<div id='conten' ng-controller='contenido'>
 			<? include 'contenido.php';?>
-			<div id='preview'>
+			<div class='preview'>
 				<? include 'includes/preview.php'?>
 			<div>
 		</div>
