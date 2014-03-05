@@ -28,18 +28,33 @@ function contenido($scope) {
 		//console.log(Object.keys(fobject).length);
 		//angular.foreach(fobject, function (value,key){
 		var j = 1;
+		var ja = 0;
 			for(i=1;i<=(Object.keys(fobject).length);i++){
-				//alert(i);
+				//alert(j);
 					//alert('entre');
+				//alert(ja);
 				if((i % 2) != 0){
-					obj.push(fobject.toString(j) + ":" + fobject.toString((j + 1)));
+					ja = j + 1;
+					//alert(ja);
+					//j = ''+j;
+					//ja = ''+ja;
+					//console.log(fobject[1]);
+					var name = fobject[j];
+					var ne = fobject[ja];
+					//console.log(fobject[ja]);
+					//obj.push(fobject.toString(j) + ":" + fobject.toString((j + 1)));
+					obj[fobject[j]] = fobject[ja];
+					//j = parseInt(j);
 				}
 				if(j==9){
-					j = j + 82;
+					j = j + 80;
+					//j = j - 1;
 				}
+				j += 1;
+				//console.log(name,ne);
 			}
 		//});
-		//console.log(obj);
+		console.log(obj);
 	};
 
 //-------------- Llenadores de selects -insMaterial-------------
