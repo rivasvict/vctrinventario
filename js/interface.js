@@ -23,38 +23,23 @@ function contenido($scope) {
 
 //------------- Funcion para realizar transaccion--------------
 
+	//--Function writ() retuns an object ready to be sent to json for database manipulation--
+
 	$scope.writ = function(fobject){
 		var obj = {};
-		//console.log(Object.keys(fobject).length);
-		//angular.foreach(fobject, function (value,key){
 		var j = 1;
 		var ja = 0;
 			for(i=1;i<=(Object.keys(fobject).length);i++){
-				//alert(j);
-					//alert('entre');
-				//alert(ja);
 				if((i % 2) != 0){
 					ja = j + 1;
-					//alert(ja);
-					//j = ''+j;
-					//ja = ''+ja;
-					//console.log(fobject[1]);
-					var name = fobject[j];
-					var ne = fobject[ja];
-					//console.log(fobject[ja]);
-					//obj.push(fobject.toString(j) + ":" + fobject.toString((j + 1)));
-					obj[fobject[j]] = fobject[ja];
-					//j = parseInt(j);
+					obj[fobject[i]] = fobject[ja];
 				}
-				if(j==9){
-					j = j + 80;
-					//j = j - 1;
+				if(j==8){
+					j = j + 81;
 				}
 				j += 1;
-				//console.log(name,ne);
 			}
-		//});
-		console.log(obj);
+		return obj;
 	};
 
 //-------------- Llenadores de selects -insMaterial-------------
@@ -66,11 +51,37 @@ function contenido($scope) {
 //-Llenador de proposito del material
 
 
-	$scope.prSelect = [{value:"Fabricación alambre",id:"1"},{value:"Fabricación electrodos",id:"2"}];
+	$scope.prSelect = [{value:"Fabricación alambre",id:"1"},{value:"Fabricación electrodos",id:"2"},{value:"Ambos",id:"3"}];
 
 //-Llenador de clasificación del material
 
 
 	$scope.clSelect = [{value:"A - Cobrizantes",id:"1"},{value:"E - Revestimiento seco",id:"2"},{value:"E - Aglutinantes",id:"3"},{value:"Alambre",id:"4"}];
+
+//-Funcion que se basa en prSelect (campo proposito de producto) para llenarcampo de clasiicación
+
+	$scope.fclSelect = function(prS){
+		$scope.clSelect = {};
+		$('#clasM').show();
+		if(prS=='Fabricación alambre'){
+			$scope.clSelect = [{
+					value:"A - Cobrizantes",
+					id:"1"
+				}];
+		}else if(prS=='Fabricación electrodos'){
+			$scope.clSelect = [{
+					value:"E - Revestimiento seco",
+					id:"2"
+				},{
+					value:"E - Aglutinantes",
+					id:"3"
+				}];
+		}else{
+			$scope.clSelect = [{
+					value:"Alambre",
+					id:"4"
+				}];
+		}
+	}
 
 }

@@ -53,7 +53,7 @@ $fob9 = "Clasificación del material: ";
 	<span>
 		<? echo $fob7?>
 	</span>
-	<select <? echo $form8?> ame='propMaterial' id='propM' class='frm' ng-options="option.value as option.value for option in prSelect" ng-model="fobject.8" required>
+	<select <? echo $form8?> ng-change="fclSelect(fobject.8)" name='propMaterial' id='propM' class='frm' ng-options="option.value as option.value for option in prSelect" ng-model="fobject.8" required>
 	</select>
 
         <? echo $hit1.'9'.$hit2.'9'.$hit3.$fob9.$hit4;?>
