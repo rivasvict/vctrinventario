@@ -103,15 +103,37 @@ class SQL{
 }
 //Test area
 $q = new SQL;
-/*echo $q->sqlSelect([idMaterial,Existencia,Nombre],'Material','').'<br>';
+/*
+
+echo $q->sqlSelect([idMaterial,Existencia,Nombre],'Material','').'<br>';
+
+
 echo $q->sqlSelect('*','Material','').'<br>';
+
+
 echo $q->sqlSelect('idMaterial','Material',['idMaterial = 1','Existencia = 10']).'<br>';
+
+
 echo $q->sqlSelect('idMaterial','Material','idMaterial = 1').'<br>';
+
+
 echo $q->sqlSelect('idMaterial','Material','idMaterial = 1').'<br>';
+
+
 echo $q->sqlInsert('Material',[idMaterial,Existencia,Nombre],['null',5,'"E"']).'<br>';
+
+
 echo $q->sqlInsert('Material',[Existencia,Nombre],[15,D]).'<br>';
+
+
 echo $q->sqlUpdate('Material',['Existencia = 20','Nombre = "F"'],'idMaterial = 5').'<br>';
+
+
 echo $q->sqlOperaciones([20,1,3,7],'+').'<br>';
+
+
 echo $q->sqlOperaciones([$q->sqlSelect('Existencia','Material',['idMaterial = 1']),7,$q->sqlSelect('Existencia','Material','idMaterial = 1')],'+').'<br>';
-echo $q->sqlOperaciones([20,1,3,7],['+','-','/']).'<br>';
+
+
+echo $q->sqlOperaciones([20,1,3,7],['+','-','/']).'<br>';*/
 ?>

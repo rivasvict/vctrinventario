@@ -39,7 +39,34 @@ function contenido($scope) {
 				}
 				j += 1;
 			}
-		return obj;
+
+		var k = 1;
+		var ka = 1;
+		var obj2 = {};
+		var n = 0;
+		for(c=1;c<=(Object.keys(fobject).length);c++){
+			if((c % 2) != 0){
+				ka = k + 1;
+				obj2[n] = fobject[ka];
+				n += 1;
+			}
+			if(k==8){
+				k = k + 81;
+			}
+			k += 1;
+		}
+		console.log(obj2);
+
+		var dta = JSON.stringify(obj);
+		$.post(
+				'phpdep/arequest.php',
+			{
+				varPage:dta
+			},
+			function(data){
+				$('#ajaxreq').html(data);
+			}
+		);
 	};
 
 //-------------- Llenadores de selects -insMaterial-------------

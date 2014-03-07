@@ -43,6 +43,9 @@
 			<div class='preview'>
 				<? include 'includes/preview.php'?>
 			<div>
+			<div id='ajaxreq'>
+				
+			</div>
 		</div>
 	</body>
 </html>
