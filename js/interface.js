@@ -24,7 +24,7 @@ function contenido($scope) {
 //------------- Funcion para realizar transaccion--------------
 
 	//--Function writ() retuns an object ready to be sent to json for database manipulation--
-
+	$scope.oja = {};
 	$scope.writ = function(fobject){
 		var obj = {};
 		var j = 1;
@@ -55,7 +55,7 @@ function contenido($scope) {
 			}
 			k += 1;
 		}
-		console.log(obj2);
+		//console.log(oj);
 
 		var dta = JSON.stringify(obj);
 		$.post(
@@ -64,10 +64,17 @@ function contenido($scope) {
 				varPage:dta
 			},
 			function(data){
-				$('#ajaxreq').html(data);
+				//$('#ajaxreq').html(data);
 			}
 		);
+		$scope.oja = obj;
+		
+		console.log($scope.oja);
 	};
+
+	$scope.notSorted = function (o){
+		return o? Object.keys(o) : [];
+	}
 
 //-------------- Llenadores de selects -insMaterial-------------
 
