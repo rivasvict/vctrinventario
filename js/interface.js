@@ -73,6 +73,11 @@ function contenido($scope) {
 	};
 
 	$scope.notSorted = function (o){
+		/*if(o){
+			return Object.keys(o);
+		}else{
+			return {};
+		}*/
 		return o? Object.keys(o) : [];
 	}
 
