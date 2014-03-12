@@ -10,12 +10,45 @@ class material{
 	protected $Proposito_del_material;
 	protected $Clasificacion_del_material;
 
-	public function insertMat($obj){
-		$this->$Nombre_del_material = $obj['0'];
-		$this->$Codigo_del_material = $obj['1'];
-		$this->$Unidad = $obj['2'];
-		$this->$Proposito_del_material = $obj['3'];
-		$this->$Clasificacion_del_material = $obj['4'];
+	public function createMaterial($obj){
+		//$obj = (array) $obj;
+		//var_dump($obj);
+		$v0 = "0";
+		$v1 = "1";
+		$v2 = "2";
+		$v3 = "3";
+		$v4 = "4";
+		//var_dump($obj->$v1);
+		$this->Nombre_del_material = $obj->$v0;
+		$this->Codigo_del_material = $obj->$v1;
+		$this->Unidad = $obj->$v2;
+		$this->Proposito_del_material = $obj->$v3;
+		$this->Clasificacion_del_material = $obj->$v4;
+		/*var_dump($this);
+		return $this;*/
+	}
+
+	public function __toString(){
+		return $this->insertMaterial($obj);
+	}
+
+	public function insertMaterial() {
+		$q = new SQL;
+		$q->sqlInsert('Material',[
+						Nombre_del_material,
+						Codigo_del_material,
+						Unidad,
+						Propositio_del_material,
+						Clasificacion_del_material
+					],
+					[
+						"'".$this->Nombre_del_material."'",
+						"'".$this->Codigo_del_material."'",
+						"'".$this->Unidad."'",
+						"'".$this->Proposito_del_material."'",
+						"'".$this->Clasificacion_del_material."'"
+					]);
+		return $q;
 	}
 
 }

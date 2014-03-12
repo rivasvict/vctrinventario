@@ -102,7 +102,7 @@ class SQL{
 
 }
 //Test area
-$q = new SQL;
+//$q = new SQL;
 /*
 
 echo $q->sqlSelect([idMaterial,Existencia,Nombre],'Material','').'<br>';
