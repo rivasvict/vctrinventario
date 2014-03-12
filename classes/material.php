@@ -11,9 +11,11 @@ class material{
 	protected $Clasificacion_del_material;
 
 	public function insertMat($obj){
-		foreach ($obj as $key => $value){
-			$s 
-		}
+		$this->$Nombre_del_material = $obj['0'];
+		$this->$Codigo_del_material = $obj['1'];
+		$this->$Unidad = $obj['2'];
+		$this->$Proposito_del_material = $obj['3'];
+		$this->$Clasificacion_del_material = $obj['4'];
 	}
 
 }

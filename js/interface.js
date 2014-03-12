@@ -92,43 +92,62 @@ function contenido($scope) {
 		);
 	}
 
-//-------------- Llenadores de selects -insMaterial-------------
 
-//-Llenador de unidades
+//------------------------SELECTS------------------------------
 
-	$scope.s0 = [{value:"Kilogramos - Kgs",id:"1"},{value:"Litros - Lts",id:"2"}];
+	//-Manejadores de seleccion
 
-//-Llenador de proposito del material
+		//-INDICES PARA SELECTS POR PANTALLA-
+
+$scope.range = {};
+$scope.indexs = function(screen){
+	// s = start range
+	var s = 0;
+	// e = end of range
+	var e = 0;
+	if(screen == 'material'){
+		e = 2;
+	}
+	$scope.range = [{start:s,end:e}];
+	var rangephp = JSON.stringify($scope.range);
+	return rangephp;
+}
+
+	//-------------- Llenadores de selects -insMaterial-------------
+
+		//-Llenador de unidades
+
+	$scope.s0 = [{value:"0:Kilogramos - Kgs",id:"1"},{value:"1:Litros - Lts",id:"2"}];
+
+		//-Llenador de proposito del material
+
+	$scope.s1 = [{value:"0:Fabricación alambre",id:"1"},{value:"1:Fabricación electrodos",id:"2"},{value:"2:Ambos",id:"3"}];
+		//-Llenador de clasificación del material
 
 
-	$scope.s1 = [{value:"Fabricación alambre",id:"1"},{value:"Fabricación electrodos",id:"2"},{value:"Ambos",id:"3"}];
+	$scope.s2 = [{value:"0:A - Cobrizantes",id:"1"},{value:"1:E - Revestimiento seco",id:"2"},{value:"2:E - Aglutinantes",id:"3"},{value:"3:Alambre",id:"4"}];
 
-//-Llenador de clasificación del material
-
-
-	$scope.s2 = [{value:"A - Cobrizantes",id:"1"},{value:"E - Revestimiento seco",id:"2"},{value:"E - Aglutinantes",id:"3"},{value:"Alambre",id:"4"}];
-
-//-Funcion que se basa en s0 (campo proposito de producto) para llenarcampo de clasiicación
+		//-Funcion que se basa en s1 (campo proposito de producto) para llenarcampo de clasiicación s2
 
 	$scope.fs2 = function(prS){
 		$scope.s2 = {};
 		$('#clasM').show();
-		if(prS=='Fabricación alambre'){
+		if(prS=='0:Fabricación alambre'){
 			$scope.s2 = [{
-					value:"A - Cobrizantes",
+					value:"0:A - Cobrizantes",
 					id:"1"
 				}];
-		}else if(prS=='Fabricación electrodos'){
+		}else if(prS=='1:Fabricación electrodos'){
 			$scope.s2 = [{
-					value:"E - Revestimiento seco",
+					value:"1:E - Revestimiento seco",
 					id:"2"
 				},{
-					value:"E - Aglutinantes",
+					value:"2:E - Aglutinantes",
 					id:"3"
 				}];
 		}else{
 			$scope.s2 = [{
-					value:"Alambre",
+					value:"3:Alambre",
 					id:"4"
 				}];
 		}
