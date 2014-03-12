@@ -80,30 +80,30 @@ function contenido($scope) {
 
 //-Llenador de unidades
 
-	$scope.uSelect = [{value:"Kilogramos - Kgs",id:"1"},{value:"Litros - Lts",id:"2"}];
+	$scope.s0 = [{value:"Kilogramos - Kgs",id:"1"},{value:"Litros - Lts",id:"2"}];
 
 //-Llenador de proposito del material
 
 
-	$scope.prSelect = [{value:"Fabricación alambre",id:"1"},{value:"Fabricación electrodos",id:"2"},{value:"Ambos",id:"3"}];
+	$scope.s1 = [{value:"Fabricación alambre",id:"1"},{value:"Fabricación electrodos",id:"2"},{value:"Ambos",id:"3"}];
 
 //-Llenador de clasificación del material
 
 
-	$scope.clSelect = [{value:"A - Cobrizantes",id:"1"},{value:"E - Revestimiento seco",id:"2"},{value:"E - Aglutinantes",id:"3"},{value:"Alambre",id:"4"}];
+	$scope.s2 = [{value:"A - Cobrizantes",id:"1"},{value:"E - Revestimiento seco",id:"2"},{value:"E - Aglutinantes",id:"3"},{value:"Alambre",id:"4"}];
 
-//-Funcion que se basa en prSelect (campo proposito de producto) para llenarcampo de clasiicación
+//-Funcion que se basa en s0 (campo proposito de producto) para llenarcampo de clasiicación
 
-	$scope.fclSelect = function(prS){
-		$scope.clSelect = {};
+	$scope.fs2 = function(prS){
+		$scope.s2 = {};
 		$('#clasM').show();
 		if(prS=='Fabricación alambre'){
-			$scope.clSelect = [{
+			$scope.s2 = [{
 					value:"A - Cobrizantes",
 					id:"1"
 				}];
 		}else if(prS=='Fabricación electrodos'){
-			$scope.clSelect = [{
+			$scope.s2 = [{
 					value:"E - Revestimiento seco",
 					id:"2"
 				},{
@@ -111,7 +111,7 @@ function contenido($scope) {
 					id:"3"
 				}];
 		}else{
-			$scope.clSelect = [{
+			$scope.s2 = [{
 					value:"Alambre",
 					id:"4"
 				}];
