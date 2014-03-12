@@ -25,7 +25,7 @@ function contenido($scope) {
 
 	//--Function writ() retuns an object ready to be sent to json for database manipulation--
 	$scope.oja = {};
-	$scope.writ = function(fobject){
+	$scope.assocA = function(fobject){
 		var obj = {};
 		var j = 1;
 		var ja = 0;
@@ -39,6 +39,13 @@ function contenido($scope) {
 				}
 				j += 1;
 			}
+
+		$scope.oja = obj;		
+		return $scope.oja;
+	};
+
+	$scope.oja2 = {};
+	$scope.nonAssocA = function(fobject){
 
 		var k = 1;
 		var ka = 1;
@@ -55,8 +62,24 @@ function contenido($scope) {
 			}
 			k += 1;
 		}
-		//console.log(oj);
 
+		$scope.oja2 = obj2;
+		console.log($scope.oja2);
+		return $scope.oja2;
+
+	}
+
+	$scope.notSorted = function (o){
+		/*if(o){
+			return Object.keys(o);
+		}else{
+			return {};
+		}*/
+		return o? Object.keys(o) : [];
+	};
+
+	$scope.accPrev = function (obj){
+		var obj = $scope.nonAssocA(obj);
 		var dta = JSON.stringify(obj);
 		$.post(
 				'phpdep/arequest.php',
@@ -64,16 +87,9 @@ function contenido($scope) {
 				varPage:dta
 			},
 			function(data){
-				//$('#ajaxreq').html(data);
+				$('#ajaxreq').html(data);
 			}
 		);
-		$scope.oja = obj;
-		
-		console.log($scope.oja);
-	};
-
-	$scope.notSorted = function (o){
-		return o? Object.keys(o) : [];
 	}
 
 //-------------- Llenadores de selects -insMaterial-------------
