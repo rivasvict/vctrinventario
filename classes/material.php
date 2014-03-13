@@ -1,6 +1,7 @@
 <?
 
 include 'SQL.php';
+include 'bdConex.php';
 
 class material{
 
@@ -28,17 +29,17 @@ class material{
 		return $this;*/
 	}
 
-	public function __toString(){
+	/*public function __toString(){
 		return $this->insertMaterial($obj);
-	}
+	}*/
 
 	public function insertMaterial() {
 		$q = new SQL;
-		$q->sqlInsert('Material',[
+		$s = $q->sqlInsert('material',[
 						Nombre_del_material,
 						Codigo_del_material,
 						Unidad,
-						Propositio_del_material,
+						Proposito_del_material,
 						Clasificacion_del_material
 					],
 					[
@@ -48,7 +49,7 @@ class material{
 						"'".$this->Proposito_del_material."'",
 						"'".$this->Clasificacion_del_material."'"
 					]);
-		return $q;
+		@mysqlOdriver::query($s);
 	}
 
 }

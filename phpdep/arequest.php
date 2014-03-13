@@ -4,8 +4,8 @@ include '../classes/material.php';
 $obj1 = json_decode($_POST['varPage']);
 $mat = new material;
 $mat->createMaterial($obj1);
-$mat->insertMaterial();
-echo $mat;
+echo $mat->insertMaterial();
 //var_dump($mat);
-//echo $mat->insertMaterial($obj);
+//var_dump($mat);
+//var_dump($mat->insertMaterial());
 ?>
