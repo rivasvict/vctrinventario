@@ -121,7 +121,7 @@ $scope.indexs = function(screen){
 
 		//-Llenador de proposito del material
 
-	$scope.s1 = [{value:"0:Fabricación alambre",id:"1"},{value:"1:Fabricación electrodos",id:"2"},{value:"2:Ambos",id:"3"}];
+	$scope.s1 = [{value:"0:Fabricacion alambre",id:"1"},{value:"1:Fabricacion electrodos",id:"2"},{value:"2:Ambos",id:"3"}];
 		//-Llenador de clasificación del material
 
 
@@ -132,12 +132,12 @@ $scope.indexs = function(screen){
 	$scope.fs2 = function(prS){
 		$scope.s2 = {};
 		$('#clasM').show();
-		if(prS=='0:Fabricación alambre'){
+		if(prS=='0:Fabricacion alambre'){
 			$scope.s2 = [{
 					value:"0:A - Cobrizantes",
 					id:"1"
 				}];
-		}else if(prS=='1:Fabricación electrodos'){
+		}else if(prS=='1:Fabricacion electrodos'){
 			$scope.s2 = [{
 					value:"1:E - Revestimiento seco",
 					id:"2"

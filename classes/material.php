@@ -12,26 +12,17 @@ class material{
 	protected $Clasificacion_del_material;
 
 	public function createMaterial($obj){
-		//$obj = (array) $obj;
-		//var_dump($obj);
 		$v0 = "0";
 		$v1 = "1";
 		$v2 = "2";
 		$v3 = "3";
 		$v4 = "4";
-		//var_dump($obj->$v1);
 		$this->Nombre_del_material = $obj->$v0;
 		$this->Codigo_del_material = $obj->$v1;
 		$this->Unidad = $obj->$v2;
 		$this->Proposito_del_material = $obj->$v3;
 		$this->Clasificacion_del_material = $obj->$v4;
-		/*var_dump($this);
-		return $this;*/
 	}
-
-	/*public function __toString(){
-		return $this->insertMaterial($obj);
-	}*/
 
 	public function insertMaterial() {
 		$q = new SQL;
@@ -50,6 +41,17 @@ class material{
 						"'".$this->Clasificacion_del_material."'"
 					]);
 		@mysqlOdriver::query($s);
+	}
+
+	public function selectMaterial($table,$params){
+		if(!$params){
+			$select = "*,material,''";
+		}else{
+
+		}
+		$q = new SQL;
+		$s = $q->sqlSelect($select);
+		return $s;
 	}
 
 }
