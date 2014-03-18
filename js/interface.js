@@ -27,13 +27,31 @@ function contenido($scope) {
 		$scope.filler = {};
 		$scope.ftittle = {};
 		$scope.fillerq = function(keyword, dataArray){
-			var i=0;
+		var i=0;
 			angular.forEach(dataArray, function(value, key){
 				$scope.filler.push(key + ": " + value);
 				$scope.ftittle.push(i + ": " + key);
+				console.log($scope.filler);
+				console.log($scope.ftittle);
 				i += 1;
 			});
 		};
+
+	//--- Funcion para mostrar y enviar parametros de consulta de llenado o eliminacion de registros esn BD
+
+		$scope.shw = function(pointer){
+			$.post(
+				'phpdep/arequest.php',
+			{
+				varPage:pointer,
+				show:"show"
+			},
+			function(data){
+				$('#ajaxreq').html(data);
+			}
+		);
+	
+		}
 
 //------------- Funcion para realizar transaccion--------------
 
@@ -98,7 +116,8 @@ function contenido($scope) {
 		$.post(
 				'phpdep/arequest.php',
 			{
-				varPage:dta
+				varPage:dta,
+				show:"insert_material"
 			},
 			function(data){
 				$('#ajaxreq').html(data);
