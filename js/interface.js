@@ -20,6 +20,20 @@ function contenido($scope) {
 	};
 
 	$scope.reset();
+//------------- Funciones para devolver consultas hechas a BD------
+
+	//--- Funcion para construir objetos de base de datos-----
+
+		$scope.filler = {};
+		$scope.ftittle = {};
+		$scope.fillerq = function(keyword, dataArray){
+			var i=0;
+			angular.forEach(dataArray, function(value, key){
+				$scope.filler.push(key + ": " + value);
+				$scope.ftittle.push(i + ": " + key);
+				i += 1;
+			});
+		};
 
 //------------- Funcion para realizar transaccion--------------
 

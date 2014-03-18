@@ -39,7 +39,8 @@
 	</head>
 	<body>
 		<div id='conten' ng-controller='contenido'>
-			<? include 'contenido.php';?>
+			<? //include 'contenido.php';?>
+			<a onclick='shw("material")' href=''>Materiales</a>
 			<div class='preview'>
 				<? include 'includes/preview.php'?>
 			<div>
