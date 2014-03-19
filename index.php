@@ -38,7 +38,7 @@
 				<? include 'includes/customjs.php';?>
 	</head>
 	<body>
-		<div id='conten' ng-controller='contenido'>
+		<div id='cont' ng-controller='contenido'>
 			<? //include 'contenido.php';?>
 			<a ng-click='shw("material")' href=''>Materiales</a>
 			<div class='preview'>
