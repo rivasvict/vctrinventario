@@ -23,18 +23,17 @@ function contenido($scope) {
 //------------- Funciones para devolver consultas hechas a BD------
 
 	//--- Funcion para construir objetos de base de datos-----
-
 		$scope.filler = {};
 		$scope.ftittle = {};
 		$scope.fillerq = function(keyword, dataArray){
 		var i=0;
-			angular.forEach(dataArray, function(value, key){
+			/*angular.forEach(dataArray, function(value, key){
 				$scope.filler.push(key + ": " + value);
 				$scope.ftittle.push(i + ": " + key);
 				console.log($scope.filler);
 				console.log($scope.ftittle);
 				i += 1;
-			});
+			});*/alert("asd");
 		};
 
 	//--- Funcion para mostrar y enviar parametros de consulta de llenado o eliminacion de registros esn BD

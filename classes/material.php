@@ -44,13 +44,15 @@ class material{
 	}
 
 	public function selectMaterial($table,$params){
-		if(!$params){
-			$select = "*,material,''";
+		if($params=="n"){
+			$select = "*";
 		}else{
 
 		}
 		$q = new SQL;
-		$s = $q->sqlSelect($select);
+		$s = $q->sqlSelect($select,'material','');
+		$s = @mysqlOdriver::query($s);
+		//var_dump($s);
 		return $s;
 	}
 

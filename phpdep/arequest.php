@@ -8,13 +8,15 @@ if($_POST['show']=='insert_material'){
 	echo $mat->insertMaterial();
 }
 if($_POST['show']=='show'){
-	$result = @material::selectMaterial($_POST['varPage'],null);
+	$result = material::selectMaterial($_POST['varPage'],"n");	
+	var_dump($result);
 	$result = json_encode($result);
 ?>
 	<script type='text/javascript'>
 		//alert("<? echo $_POST['varPage']?>");
+		//console.log(<? echo $result?>);
 		//REPARAAAAAAAAR
-		$scope.fillerq("<? echo $_POST['varPage']?>","<? echo $result?>");
+		contenido($scope.fillerq("<? echo $_POST['varPage']?>","<? echo $result?>"));
 	</script>
 <?
 }
