@@ -43,7 +43,10 @@
 			<a ng-click='shw("material")' href=''>Materiales</a>
 			<div class='preview'>
 				<? include 'includes/preview.php'?>
-			<div>
+			</div>
+			<div id='query'>
+				<? include 'includes/jsQuery.php'?>
+			</div>
 			<div id='ajaxreq'>
 				
 			</div>

@@ -9,3 +9,15 @@
 #clasM{
  display:none;
 }
+
+#query{
+	display:none;
+}
+
+.displayElements{
+	
+}
+
+.displayElements tr td{
+	width:1%;
+}

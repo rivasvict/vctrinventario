@@ -9,15 +9,15 @@ if($_POST['show']=='insert_material'){
 }
 if($_POST['show']=='show'){
 	$result = material::selectMaterial($_POST['varPage'],"n");	
-	var_dump($result);
 	$result = json_encode($result);
+	//var_dump($result);
 ?>
 	<script type='text/javascript'>
 		//alert("<? echo $_POST['varPage']?>");
 		//console.log(<? echo $result?>);
 		//REPARAAAAAAAAR
-		//angular.element($('#cont')).scope().fillerq("<? echo $_POST['varPage']?>","<? echo $result?>");
-		angular.element($('#cont')).scope().fillerq("asd","asd");
+		angular.element($('#cont')).scope().fillerq('<? echo $_POST['varPage']?>',<? echo $result?>);
+		//angular.element($('#cont')).scope().fillerq("asd","asd");
 	</script>
 <?
 }

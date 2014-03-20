@@ -1,5 +1,14 @@
 angular.module('App', []);
 
+function notSorted(o){
+		/*if(o){
+			return Object.keys(o);
+		}else{
+			return {};
+		}*/
+		return o? Object.keys(o) : [];
+	};
+
 
 function contenido($scope) {
 
@@ -27,13 +36,25 @@ function contenido($scope) {
 		$scope.ftittle = {};
 		$scope.fillerq = function(keyword, dataArray){
 		var i=0;
-			/*angular.forEach(dataArray, function(value, key){
-				$scope.filler.push(key + ": " + value);
-				$scope.ftittle.push(i + ": " + key);
-				console.log($scope.filler);
-				console.log($scope.ftittle);
-				i += 1;
-			});*/alert("asd");
+			$scope.filler = dataArray;
+			angular.forEach(dataArray, function(value, key){
+				angular.forEach(value, function(nval, nkey){
+					$scope.ftittle[nkey] = nkey;
+				});
+			});
+			//console.log($scope.filler);
+			//console.log($scope.ftittle);
+			console.log(dataArray);
+			/*$.post(
+				'includes/jsQuery.php',
+			{
+			},
+			function(data){
+				$('#query').html(data);
+			}
+		);*/
+
+			$('#query').show();
 		};
 
 	//--- Funcion para mostrar y enviar parametros de consulta de llenado o eliminacion de registros esn BD
@@ -49,7 +70,6 @@ function contenido($scope) {
 				$('#ajaxreq').html(data);
 			}
 		);
-	
 		}
 
 //------------- Funcion para realizar transaccion--------------
