@@ -32,17 +32,21 @@ function contenido($scope) {
 //------------- Funciones para devolver consultas hechas a BD------
 
 	//--- Funcion para construir objetos de base de datos-----
-		$scope.filler = {};
+		$scope.filler = [];
 		$scope.ftittle = {};
 		$scope.fillerq = function(keyword, dataArray){
 		var i=0;
 			$scope.filler = dataArray;
+			angular.forEach($scope.filler, function(v, k){
+				
+			});
 			angular.forEach(dataArray, function(value, key){
 				angular.forEach(value, function(nval, nkey){
 					$scope.ftittle[nkey] = nkey;
 				});
 			});
-			console.log(dataArray);
+		//	console.log(dataArray);
+		//	console.log($scope.filler);
 			$('#query').show();
 			$scope.$apply();
 		};
@@ -60,6 +64,12 @@ function contenido($scope) {
 				$('#ajaxreq').html(data);
 			}
 		);
+		}
+
+//-----FUNCIONES PARA EDICION Y ELIMINACION DE REGISTROS----------
+
+		$scope.editar = function(obje){
+			console.log(obje);
 		}
 
 //------------- Funcion para realizar transaccion--------------
