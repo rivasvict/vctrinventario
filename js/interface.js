@@ -42,19 +42,9 @@ function contenido($scope) {
 					$scope.ftittle[nkey] = nkey;
 				});
 			});
-			//console.log($scope.filler);
-			//console.log($scope.ftittle);
 			console.log(dataArray);
-			/*$.post(
-				'includes/jsQuery.php',
-			{
-			},
-			function(data){
-				$('#query').html(data);
-			}
-		);*/
-
 			$('#query').show();
+			$scope.$apply();
 		};
 
 	//--- Funcion para mostrar y enviar parametros de consulta de llenado o eliminacion de registros esn BD
