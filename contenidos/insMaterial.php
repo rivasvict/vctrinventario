@@ -69,7 +69,7 @@ $vistArr = 'hola';
 $target = 'chao';
 ?>
 <div class='but' id='formButtoms'>
-	<? include 'includes/previewButtom.php'?>
-	<? include 'includes/cancelButtom.php'?>
+	<? include "/var/www/vctrinventario/includes/previewButtom.php";
+	 include "/var/www/vctrinventario/includes/cancelButtom.php";?>
 </div>
 </form>

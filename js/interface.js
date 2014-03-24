@@ -69,7 +69,20 @@ function contenido($scope) {
 //-----FUNCIONES PARA EDICION Y ELIMINACION DE REGISTROS----------
 
 		$scope.editar = function(obje){
-			console.log(obje);
+			$('#query').hide();
+			$.post(
+				'contenidos/insMaterial.php',
+			{
+				varPage:obje,
+				show:"show"
+			},
+			function(data){
+				//$compile($element.contents())(scope);
+				//data = angular.bootstrap(data, ['App']);
+				//console.log(data);
+				$('#cnt').html(data);
+			}
+			);
 		}
 
 //------------- Funcion para realizar transaccion--------------
@@ -165,6 +178,10 @@ $scope.indexs = function(screen){
 	return rangephp;
 }
 
+	$scope.test = function(){
+		alert("hola");
+	};
+
 	//-------------- Llenadores de selects -insMaterial-------------
 
 		//-Llenador de unidades
@@ -204,5 +221,6 @@ $scope.indexs = function(screen){
 				}];
 		}
 	}
+
 
 }

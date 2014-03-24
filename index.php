@@ -40,6 +40,9 @@
 	<body>
 		<div id='cont' ng-controller='contenido'>
 			<? //include 'contenido.php';?>
+			<div id='cnt'>
+
+			</div>
 			<a ng-click='shw("material")' href=''>Materiales</a>
 			<div class='preview'>
 				<? include 'includes/preview.php'?>
