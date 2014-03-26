@@ -10,7 +10,7 @@ function notSorted(o){
 	};
 
 
-function contenido($scope) {
+function contenido($scope,$compile) {
 
 //-------- Manejador de validacion de formularios------------
 
@@ -70,6 +70,7 @@ function contenido($scope) {
 
 		$scope.editar = function(obje){
 			$('#query').hide();
+			var obje = JSON.stringify(obje);
 			$.post(
 				'contenidos/insMaterial.php',
 			{
@@ -77,10 +78,9 @@ function contenido($scope) {
 				show:"show"
 			},
 			function(data){
-				//$compile($element.contents())(scope);
-				//data = angular.bootstrap(data, ['App']);
-				//console.log(data);
-				$('#cnt').html(data);
+				//Making angular to work over this template.
+				var scope = angular.element('#cnt').scope();
+				$('#cnt').html($compile(data)(scope));
 			}
 			);
 		}
