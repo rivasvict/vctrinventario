@@ -1,4 +1,5 @@
 <? 
+include "/var/www/vctrinventario/classes/tools.php";
 //--------- ng-init default values for editing----------------
 $fObject = json_decode($_POST['varPage']);
 $form2 = "";
@@ -6,18 +7,22 @@ $form4 = "";
 $form6 = "";
 $form8 = "";
 $form10 = "";
-//$_POST['collector'] = 'yes';
+$tool = new tools;
+$selects = array($fObject->Unidad,$fObject->Proposito_del_material,$fObject->Clasificacion_del_material);
 $va2 = $fObject->Nombre_del_material;
 $va4 = $fObject->Codigo_del_material;
-$ve = 's0[1].value';
-//if($_POST['collector']=='yes'){
+$selects = $tool->selector(0,2,$selects);
+$count = 0;
+foreach($selects as $key => $value){
+	$ve[$count] = 's'.$key.'['.$value.'].value';
+	$count++;
+}
 if(varPage){
 	$form2 = "ng-init = 'fobject.2 = ".'"'.$va2.'"'."'";
 	$form4 = "ng-init = 'fobject.4 = ".'"'.$va4.'"'."'";
-	$form6 = 'ng-init = "fobject.6 = '."".$ve."".'"';
-	$form8 = "ng-init = 'fobject.8 = ".'"'.$ve.'"'."' ng-options = 'option.value for option in options'";
-	//echo $form6;
-	$form10 = "ng-init = 'fobject.10 = ".'"'.$ve.'"'."'";
+	$form6 = 'ng-init = "fobject.6 = '."".$ve[0]."".'"';
+	$form8 = 'ng-init = "fobject.8 = '."".$ve[1]."".'"';
+	$form10 = 'ng-init = "fobject.10 = '."".$ve[2]."".'"';
 }
 //-------- Shown variables for front ---------
 $hit1 = '<input type="hidden" ng-model="fobject.';
@@ -32,7 +37,6 @@ $fob9 = "Clasificación del material: ";
 ?>
 <div>
 <form name='form' novalidate>
-	<? var_dump($fObject);?>
 	<!--<input type="hidden" ng-model="fobject.1" ng-init="fobject.1 = '<? echo $fob1?>'">-->
 	<? echo $hit1.'1'.$hit2.'1'.$hit3.$fob1.$hit4;?>
 	<span>
