@@ -43,7 +43,8 @@
 			<div id='cnt'>
 
 			</div>
-			<a ng-click='shw("material")' href=''>Materiales</a>
+			<a ng-click='show("material")' href=''>Materiales</a>
+			<a ng-click='shw("material")' href=''>Materiales ver / editar</a>
 			<div class='preview'>
 				<? include 'includes/preview.php'?>
 			</div>

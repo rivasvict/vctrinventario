@@ -12,6 +12,22 @@ function notSorted(o){
 
 function contenido($scope,$compile) {
 
+//-------- Funciones para manejo de vistas dinamicas en llenados --------
+
+	$scope.show = function(pointer){
+		if(pointer == "material"){
+			var url = "contenidos/insMaterial.php";
+		}
+		$.post(
+			url,
+		function(data){
+			//Making angular to work over this template.
+			var scope = angular.element('#cnt').scope();
+			$('#cnt').html($compile(data)(scope));
+		}
+		);
+	}
+
 //-------- Manejador de validacion de formularios------------
 
 	$scope.copia = {};
@@ -81,6 +97,7 @@ function contenido($scope,$compile) {
 				//Making angular to work over this template.
 				var scope = angular.element('#cnt').scope();
 				$('#cnt').html($compile(data)(scope));
+				$('#clasM').show();
 			}
 			);
 		}

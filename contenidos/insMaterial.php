@@ -22,7 +22,7 @@ if(varPage){
 	$form4 = "ng-init = 'fobject.4 = ".'"'.$va4.'"'."'";
 	$form6 = 'ng-init = "fobject.6 = '."".$ve[0]."".'"';
 	$form8 = 'ng-init = "fobject.8 = '."".$ve[1]."".'"';
-	$form10 = 'ng-init = "fobject.10 = '."".$ve[2]."".'"';
+	$form10 = 'ng-init = "fobject.91 = '."".$ve[2]."".'"';
 }
 //-------- Shown variables for front ---------
 $hit1 = '<input type="hidden" ng-model="fobject.';
