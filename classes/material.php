@@ -39,8 +39,22 @@ class material{
 						"'".$this->Unidad."'",
 						"'".$this->Proposito_del_material."'",
 						"'".$this->Clasificacion_del_material."'"
-					]);
+					]);*/
 		@mysqlOdriver::query($s);
+	}
+
+	public function updateMaterial(){
+		$q = new SQL;
+		$s = $q->sqlUpdate('material',[
+						"'".Nombre_del_material.' = "'.$this->Nombre_del_material.'"',
+						"'".Codigo_del_material.' = "'.$this->Codigo_del_material.'"',
+						"'".Unidad.' = "'.$this->Unidad.'"',
+						"'".Proposito_del_material.' = "'.$this->Proposito_del_material.'"',
+						"'".Clasificacion_del_material.' = "'.$this->Clasificacion_del_material.'"'],	
+						"'".Nombre_del_material.' = "'.$this->Nombre_del_material.'"',
+						);
+		var_dump($s);
+		//@mysqlOdriver::query($s);
 	}
 
 	public function selectMaterial($table,$params){

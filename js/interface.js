@@ -15,6 +15,7 @@ function contenido($scope,$compile) {
 //-------- Funciones para manejo de vistas dinamicas en llenados --------
 
 	$scope.show = function(pointer){
+		$('#cnt').empty();
 		if(pointer == "material"){
 			var url = "contenidos/insMaterial.php";
 		}
@@ -70,6 +71,7 @@ function contenido($scope,$compile) {
 	//--- Funcion para mostrar y enviar parametros de consulta de llenado o eliminacion de registros esn BD
 
 		$scope.shw = function(pointer){
+			$('#cnt').empty();
 			$.post(
 				'phpdep/arequest.php',
 			{
@@ -80,11 +82,24 @@ function contenido($scope,$compile) {
 				$('#ajaxreq').html(data);
 			}
 		);
+			$.post(
+				'includes/jsQuery.php',
+			{
+				varPage:pointer,
+				show:"show"
+			},
+			function(data){
+				var scope = angular.element('#cnt').scope();
+				$('#cnt').html($compile(data)(scope));
+			}
+		);
+
 		}
 
 //-----FUNCIONES PARA EDICION Y ELIMINACION DE REGISTROS----------
 
 		$scope.editar = function(obje){
+			$('#cnt').empty();
 			$('#query').hide();
 			var obje = JSON.stringify(obje);
 			$.post(

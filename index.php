@@ -40,16 +40,16 @@
 	<body>
 		<div id='cont' ng-controller='contenido'>
 			<? //include 'contenido.php';?>
+			<a ng-click='show("material")' href=''>Materiales</a><br>
+			<a ng-click='shw("material")' href=''>Materiales ver / editar</a>
 			<div id='cnt'>
 
 			</div>
-			<a ng-click='show("material")' href=''>Materiales</a>
-			<a ng-click='shw("material")' href=''>Materiales ver / editar</a>
 			<div class='preview'>
 				<? include 'includes/preview.php'?>
 			</div>
 			<div id='query'>
-				<? include 'includes/jsQuery.php'?>
+				<? //include 'includes/jsQuery.php'?>
 			</div>
 			<div id='ajaxreq'>
 				
