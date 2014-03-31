@@ -16,6 +16,7 @@ function contenido($scope,$compile) {
 
 	$scope.show = function(pointer){
 		$('#cnt').empty();
+		$scope.fobject = {};
 		if(pointer == "material"){
 			var url = "contenidos/insMaterial.php";
 		}

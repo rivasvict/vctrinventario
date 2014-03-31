@@ -17,12 +17,19 @@ foreach($selects as $key => $value){
 	$ve[$count] = 's'.$key.'['.$value.'].value';
 	$count++;
 }
-if(varPage){
+if(is_null($_POST['varPage'])){
+	$form2 = "";
+	$form4 = "";
+	$form6 = "";
+	$form8 = "";
+	$form10 = "";
+}else if(!(is_null($_POST['varPage']))){
 	$form2 = "ng-init = 'fobject.2 = ".'"'.$va2.'"'."'";
 	$form4 = "ng-init = 'fobject.4 = ".'"'.$va4.'"'."'";
 	$form6 = 'ng-init = "fobject.6 = '."".$ve[0]."".'"';
 	$form8 = 'ng-init = "fobject.8 = '."".$ve[1]."".'"';
 	$form10 = 'ng-init = "fobject.91 = '."".$ve[2]."".'"';
+	$edition = true;
 }
 //-------- Shown variables for front ---------
 $hit1 = '<input type="hidden" ng-model="fobject.';

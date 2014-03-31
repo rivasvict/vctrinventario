@@ -39,12 +39,12 @@ class material{
 						"'".$this->Unidad."'",
 						"'".$this->Proposito_del_material."'",
 						"'".$this->Clasificacion_del_material."'"
-					]);*/
+					]);
 		@mysqlOdriver::query($s);
 	}
 
 	public function updateMaterial(){
-		$q = new SQL;
+		/*$q = new SQL;
 		$s = $q->sqlUpdate('material',[
 						"'".Nombre_del_material.' = "'.$this->Nombre_del_material.'"',
 						"'".Codigo_del_material.' = "'.$this->Codigo_del_material.'"',
@@ -53,7 +53,7 @@ class material{
 						"'".Clasificacion_del_material.' = "'.$this->Clasificacion_del_material.'"'],	
 						"'".Nombre_del_material.' = "'.$this->Nombre_del_material.'"',
 						);
-		var_dump($s);
+		var_dump($s);*/
 		//@mysqlOdriver::query($s);
 	}
 
