@@ -1,3 +1,4 @@
+<? session_start();?>
 <!DOCTYPE html>
 <html ng-app='App'>
 	<title>

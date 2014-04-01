@@ -122,7 +122,8 @@ function contenido($scope,$compile) {
 
 	//--Function writ() retuns an object ready to be sent to json for database manipulation--
 	$scope.oja = {};
-	$scope.assocA = function(fobject){
+	//fn is variable that is going to carry the edit or insert instruction
+	$scope.assocA = function(fobject,fn){alert(fn);
 		var obj = {};
 		var j = 1;
 		var ja = 0;

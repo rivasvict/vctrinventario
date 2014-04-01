@@ -23,13 +23,14 @@ if(is_null($_POST['varPage'])){
 	$form6 = "";
 	$form8 = "";
 	$form10 = "";
+	$edition = "false";
 }else if(!(is_null($_POST['varPage']))){
 	$form2 = "ng-init = 'fobject.2 = ".'"'.$va2.'"'."'";
 	$form4 = "ng-init = 'fobject.4 = ".'"'.$va4.'"'."'";
 	$form6 = 'ng-init = "fobject.6 = '."".$ve[0]."".'"';
 	$form8 = 'ng-init = "fobject.8 = '."".$ve[1]."".'"';
 	$form10 = 'ng-init = "fobject.91 = '."".$ve[2]."".'"';
-	$edition = true;
+	$edition = "true";
 }
 //-------- Shown variables for front ---------
 $hit1 = '<input type="hidden" ng-model="fobject.';
@@ -86,5 +87,6 @@ $target = 'chao';
 <div class='but' id='formButtoms'>
 	<? include "/var/www/vctrinventario/includes/previewButtom.php";
 	 include "/var/www/vctrinventario/includes/cancelButtom.php";?>
+
 </div>
 </form>
