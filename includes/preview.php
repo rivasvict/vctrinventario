@@ -2,5 +2,5 @@
 <!--<span ng-repeat="(key,element) in fobject | orderBy : key"><span>{{element}}<br></span></span>-->
 <div class='bPreview'>
 	<input type="button" value="Volver" onclick="pBack()">
-	<input type="button" value="Aceptar" ng-click="accPrev(fobject)">
+	<input type="button" value="Aceptar" ng-click="accPrev(fobject,'<? echo $func;?>')">
 </div>

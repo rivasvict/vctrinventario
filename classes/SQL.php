@@ -87,8 +87,7 @@ class SQL{
 		if(gettype($campos) == 'array'){
 			$campos = self::construcCadena($campos,'falso');
 		}
-		$condicion = self::cadenaCondicion($codicion);
-
+		$condicion = self::cadenaCondicion($condicion);
 		$query = "update $tablaTarget set $campos$condicion;";
 		return $query;
 	}

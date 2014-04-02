@@ -46,9 +46,6 @@
 			<div id='cnt'>
 
 			</div>
-			<div class='preview'>
-				<? include 'includes/preview.php'?>
-			</div>
 			<div id='query'>
 				<? //include 'includes/jsQuery.php'?>
 			</div>

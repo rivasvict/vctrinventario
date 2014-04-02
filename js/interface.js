@@ -123,7 +123,7 @@ function contenido($scope,$compile) {
 	//--Function writ() retuns an object ready to be sent to json for database manipulation--
 	$scope.oja = {};
 	//fn is variable that is going to carry the edit or insert instruction
-	$scope.assocA = function(fobject,fn){alert(fn);
+	$scope.assocA = function(fobject,fn){
 		var obj = {};
 		var j = 1;
 		var ja = 0;
@@ -176,14 +176,14 @@ function contenido($scope,$compile) {
 		return o? Object.keys(o) : [];
 	};
 
-	$scope.accPrev = function (obj){
+	$scope.accPrev = function (obj,fn){
 		var obj = $scope.nonAssocA(obj);
 		var dta = JSON.stringify(obj);
 		$.post(
 				'phpdep/arequest.php',
 			{
 				varPage:dta,
-				show:"insert_material"
+				fnc:fn
 			},
 			function(data){
 				$('#ajaxreq').html(data);
