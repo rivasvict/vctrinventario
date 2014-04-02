@@ -118,6 +118,21 @@ function contenido($scope,$compile) {
 			);
 		}
 
+		$scope.drop = function(obj,target,fnc){
+			if(target == "material"){
+				$.post(
+					'phpdep/arequest.php',
+				{
+					varPage:dta,
+					fnc:fn
+				},
+				function(data){
+					$('#ajaxreq').html(data);
+				}
+				);		
+			}
+		}
+
 //------------- Funcion para realizar transaccion--------------
 
 	//--Function writ() retuns an object ready to be sent to json for database manipulation--
@@ -162,7 +177,7 @@ function contenido($scope,$compile) {
 		}
 
 		$scope.oja2 = obj2;
-		console.log($scope.oja2);
+		//console.log($scope.oja2);
 		return $scope.oja2;
 
 	}
