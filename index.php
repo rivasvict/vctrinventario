@@ -41,7 +41,7 @@
 	<body>
 		<div id='cont' ng-controller='contenido'>
 			<? //include 'contenido.php';?>
-			<a ng-click='show("material")' href=''>Materiales</a><br>
+			<a ng-click='show("material")' href=''>Insertar un nuevo material</a><br>
 			<a ng-click='shw("material")' href=''>Materiales ver / editar</a>
 			<div id='cnt'>
 

@@ -13,6 +13,10 @@ if($_POST['fnc']=='edit_material'){
 	$mat->createMaterial($obj1);
 	echo $mat->updateMaterial();
 }
+if(($_POST['fnc']=='drop') && ($_POST['tgt']=='material')){
+	$mat = new material;
+	$mat->dropMaterial($_POST['varPage']);
+}
 if($_POST['show']=='show'){
 	$result = material::selectMaterial($_POST['varPage'],"n");	
 	$result = json_encode($result);

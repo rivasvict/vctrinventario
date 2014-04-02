@@ -53,8 +53,12 @@ class material{
 						Clasificacion_del_material.' = "'.$this->Clasificacion_del_material.'"'],	
 						Codigo_del_material.' = "'.$this->Codigo_del_material.'"'
 						);
-	//	var_dump($s);
 		@mysqlOdriver::query($s);
+	}
+
+	public function dropMaterial($id){
+		$sql = "DELETE from material where Codigo_del_material = '".$id."'";
+		@mysqlOdriver::query($sql);
 	}
 
 	public function selectMaterial($table,$params){

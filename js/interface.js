@@ -118,18 +118,25 @@ function contenido($scope,$compile) {
 			);
 		}
 
-		$scope.drop = function(obj,target,fnc){
+		$scope.drop = function(obj,target,fn){
 			if(target == "material"){
+				var element_name = obj.Codigo_del_material;
+			}
+			var answer = confirm("¿Realmente desea eliminar el elemento con codigo " + element_name + "?");
+			if(answer){
 				$.post(
 					'phpdep/arequest.php',
 				{
-					varPage:dta,
-					fnc:fn
+					varPage:element_name,
+					fnc:fn,
+					tgt:target
 				},
 				function(data){
 					$('#ajaxreq').html(data);
 				}
-				);		
+				);	
+				var index=$scope.filler.indexOf(obj);
+				$scope.filler.splice(index,1);
 			}
 		}
 
