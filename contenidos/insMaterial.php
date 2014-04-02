@@ -45,39 +45,72 @@ $fob9 = "Clasificación del material: ";
 ?>
 <div>
 <form name='form' novalidate>
+	<table>
+
+	<tr>
+	<td>
 	<!--<input type="hidden" ng-model="fobject.1" ng-init="fobject.1 = '<? echo $fob1?>'">-->
 	<? echo $hit1.'1'.$hit2.'1'.$hit3.$fob1.$hit4;?>
 	<span>
 		<? echo $fob1?>
 	</span>
+	</td>
+	<td>
 	<input type='text' name='nombreMaterial' id='nMat' class='frm' <? echo $form2?> ng-model="fobject.2" required>
+	</td>
+	</tr>
 
+	<tr>
+	<td>
         <? echo $hit1.'3'.$hit2.'3'.$hit3.$fob3.$hit4;?>
 	<span>
 		<? echo $fob3?>
 	</span>
+	</td>
+	<td>
 	<input type='text' name='codigoMaterial' id='cMat' class='frm'<? echo $form4?>  ng-model="fobject.4" required>
+	</td>
+	</tr>
 
+	<tr>
+	<td>
         <? echo $hit1.'5'.$hit2.'5'.$hit3.$fob5.$hit4;?>
 	<span>
 		<? echo $fob5?>
 	</span>
+	</td>
+	<td>
 	<select <? echo $form6?> name='unidad' id='unit' class='frm' ng-options="option.value as option.value for option in s0" ng-model="fobject.6" required>
     	</select> 
+	</td>
+	</tr>
 
+	<tr>
+	<td>
         <? echo $hit1.'7'.$hit2.'7'.$hit3.$fob7.$hit4;?>
 	<span>
 		<? echo $fob7?>
 	</span>
+	</td>
+	<td>
 	<select <? echo $form8?> ng-change="fs2(fobject.8)" name='propMaterial' id='propM' class='frm' ng-options="option.value as option.value for option in s1" ng-model="fobject.8" required>
 	</select>
+	</td>
+	</tr>
 
+	<tr>
+	<td>
         <? echo $hit1.'9'.$hit2.'9'.$hit3.$fob9.$hit4;?>
 	<span>
 		<? echo $fob9?>
 	</span>
+	</td>
+	<td>
 	<select  <? echo $form10?> name='clasMaterial' id='clasM' class='frm' ng-options="option.value as option.value for option in s2" ng-model="fobject.91" required>
  	</select>
+	</td>
+	</tr>
+	</table>
 </div>
 <!-- AREA DE PARAMETROS PARA BOTONES-->
 <?
@@ -91,5 +124,9 @@ $target = 'chao';
 </div>
 </form>
 <div class='preview'>
-	<? include '/var/www/vctrinventario/includes/preview.php'?>
+	<div class='blockForm'>
+	</div>
+		<div class='showPrev'>
+			<? include '/var/www/vctrinventario/includes/preview.php'?>
+		</div>
 </div>

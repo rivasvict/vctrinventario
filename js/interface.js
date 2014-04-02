@@ -211,8 +211,13 @@ function contenido($scope,$compile) {
 				$('#ajaxreq').html(data);
 			}
 		);
+		alert("su transacción se ha realizado con exito");
+		$('#cnt').empty();
 	}
 
+	$scope.cancel = function(){
+		$('#cnt').empty();
+	}
 
 //------------------------SELECTS------------------------------
 
@@ -264,10 +269,10 @@ $scope.indexs = function(screen){
 				}];
 		}else if(prS=='1:Fabricacion electrodos'){
 			$scope.s2 = [{
-					value:"1:E - Revestimiento seco",
+					value:"0:E - Revestimiento seco",
 					id:"2"
 				},{
-					value:"2:E - Aglutinantes",
+					value:"1:E - Aglutinantes",
 					id:"3"
 				}];
 		}else{
