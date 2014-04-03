@@ -54,6 +54,11 @@
 				</li>
 				<li>
 					Formulas
+					<ul class="submenu1">
+						<li>
+							<a ng-click='show("formula")' href=''>Insertar una nueva formula</a><br>
+						</li>
+					</ul>
 				</li>
 			</ul>
 			<div id='cnt'>

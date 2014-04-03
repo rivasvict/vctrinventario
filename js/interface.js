@@ -19,6 +19,8 @@ function contenido($scope,$compile) {
 		$scope.fobject = {};
 		if(pointer == "material"){
 			var url = "contenidos/insMaterial.php";
+		}else if(pointer == "formula"){
+			var url = "contenidos/insFormula.php";
 		}
 		$.post(
 			url,
