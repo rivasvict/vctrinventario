@@ -12,6 +12,8 @@ function notSorted(o){
 
 function contenido($scope,$compile) {
 
+$scope.tits = [{num:'2'},{num:'3'},{num:'4'}];
+
 //-------- Funciones para manejo de vistas dinamicas en llenados --------
 
 	$scope.show = function(pointer){
