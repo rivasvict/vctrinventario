@@ -1,3 +1,36 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+
+ul{
+	list-style:none;
+}
+
+#menu{
+	position:absolute;
+	top:0px;
+}
+
+ul#menu li{
+	background-color:rgb(228, 238, 243);
+	position:relative;
+	float:left;
+	text-align:center;
+	width:185px;
+	margin-right:4px;
+	margin-top:4px;
+}
+
+.submenu1{
+	position:absolute;
+	display:none;
+}
+
+ul#menu li:hover .submenu1{
+	display:block;
+}
+
 .llenado{
 	//display:none;
 }
@@ -20,6 +53,10 @@
 
 .displayElements tr td{
 	width:1%;
+}
+
+#cnt{
+	margin-top:52px;
 }
 
 /*---PREVIEW STYLING---*/
