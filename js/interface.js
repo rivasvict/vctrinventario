@@ -1,19 +1,17 @@
-angular.module('App', []);
-
-function notSorted(o){
-		/*if(o){
-			return Object.keys(o);
-		}else{
-			return {};
-		}*/
-		return o? Object.keys(o) : [];
-	};
-
-
-function contenido($scope,$compile) {
-
-$scope.tits = [{num:'2'},{num:'3'},{num:'4'}];
-
+var app = angular.module('App', ['ngSanitize'])
+.controller('contenido', function($scope,$compile,$sce) {
+var asd = "5";
+$scope.tits = [];
+$scope.addFormula = function(){
+//$scope.tits.push(num:asd);
+//$scope.tits.push({num:$sce.trustAsHtml('<input type="text" ng-model="fobject.' + asd + '" name="boobs">{{fobject.4}}')});
+//var scope = angular.element('#fbind').scope();
+var ht = '<input type="text" ng-model="fobject.' + asd + '" name="boobs">{{fobject.4}}';
+//var ht = $compile(ht).(scope);
+//var ht = $sce.trustAsHtml(ht)
+//$scope.tits.push({num:$compile(ht)(scope)});
+$scope.tits.push({num:ht});
+}
 //-------- Funciones para manejo de vistas dinamicas en llenados --------
 
 	$scope.show = function(pointer){
@@ -164,7 +162,7 @@ $scope.tits = [{num:'2'},{num:'3'},{num:'4'}];
 				j += 1;
 			}
 
-		$scope.oja = obj;		
+		$scope.oja = obj;
 		return $scope.oja;
 	};
 
@@ -288,4 +286,24 @@ $scope.indexs = function(screen){
 	}
 
 
-}
+})
+.directive('dir', function($compile,$parse){
+	return {
+		restrict: 'E',
+		link: function(scope, element, attr){
+				scope.$watch(attr.content, function(){
+						element.html($parse(attr.content)(scope));
+						$compile(element.contents())(scope);
+					}, true);
+			}
+		}
+});
+
+function notSorted(o){
+		/*if(o){
+			return Object.keys(o);
+		}else{
+			return {};
+		}*/
+		return o? Object.keys(o) : [];
+	};
