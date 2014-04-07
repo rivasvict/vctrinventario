@@ -10,7 +10,9 @@ var ht = '<input type="text" ng-model="fobject.' + asd + '" name="boobs">{{fobje
 //var ht = $compile(ht).(scope);
 //var ht = $sce.trustAsHtml(ht)
 //$scope.tits.push({num:$compile(ht)(scope)});
-$scope.tits.push({num:ht});
+//$scope.num = ht;
+$scope.tits.push({num:"2"});
+//console.log($scope.tits);
 }
 //-------- Funciones para manejo de vistas dinamicas en llenados --------
 
@@ -287,7 +289,7 @@ $scope.indexs = function(screen){
 
 
 })
-.directive('dir', function($compile,$parse){
+/*.directive('dir', function($compile,$parse){
 	return {
 		restrict: 'E',
 		link: function(scope, element, attr){
@@ -297,7 +299,18 @@ $scope.indexs = function(screen){
 					}, true);
 			}
 		}
-});
+});*/
+.directive('dir', function($compile, $parse) {
+    return {
+      restrict: 'E',
+      link: function(scope, element, attr) {
+        scope.$watch(attr.content, function() {
+          element.html($parse(attr.content)(scope));
+          $compile(element.contents())(scope);
+        }, true);
+      }
+    }
+  })
 
 function notSorted(o){
 		/*if(o){
