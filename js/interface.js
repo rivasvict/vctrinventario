@@ -2,11 +2,32 @@ var app = angular.module('App', ['ngSanitize'])
 .controller('contenido', function($scope,$compile,$sce) {
 
 
-var asd = "5";
-$scope.tits = [];
+$scope.forbject = [];
 $scope.addFormula = function(){
-var ht = '<input type="text" ng-model="fobject.' + asd + '" name="boobs">{{fobject.5}}';
-$scope.tits.push({num:ht});
+	if($scope.forbject.length != 0){
+		//alert($scope.forbject[$scope.forbject.length - 1].c);
+		var n = $scope.forbject[$scope.forbject.length - 1].c + 2;
+		if(n==10){
+			n = 91;
+		}
+		if(n==101){
+			n = 991;
+		}
+		alert(n);
+	}else{
+		var n = 6;
+	}
+//REVISAR POR QUE NO DEFINE A "NM"
+	if(n==91){
+		var nm = 9;
+		alert("cambie mn a el valor de: " + mn + " cuando n vale: " + n)
+	}else{
+		var nm = n - 1;	
+	}
+	alert("NM FINALMENTE VALE: " + nm);
+	var hth = '<input type="hidden" ng-model="fobject.' + nm + '" ng-init="fobject.' + nm + ' = ' + "'" + 'Ingrediente: ' + "'" + '">';
+	var ht = 'Ingrediente: <input type="text" ng-model="fobject.' + n + '">{{fobject.' + n +'}}';
+	$scope.forbject.push({tag:ht,htag:hth,c:n});
 }
 
 
@@ -15,6 +36,7 @@ $scope.tits.push({num:ht});
 	$scope.show = function(pointer){
 		$('#cnt').empty();
 		$scope.fobject = {};
+		$scope.forbject = [];
 		if(pointer == "material"){
 			var url = "contenidos/insMaterial.php";
 		}else if(pointer == "formula"){
@@ -146,6 +168,7 @@ $scope.tits.push({num:ht});
 	$scope.oja = {};
 	//fn is variable that is going to carry the edit or insert instruction
 	$scope.assocA = function(fobject,fn){
+	console.log(fobject);
 		var obj = {};
 		var j = 1;
 		var ja = 0;
@@ -166,7 +189,6 @@ $scope.tits.push({num:ht});
 
 	$scope.oja2 = {};
 	$scope.nonAssocA = function(fobject){
-
 		var k = 1;
 		var ka = 1;
 		var obj2 = {};
