@@ -81,11 +81,13 @@ $fob3 = "Ingrediente #:";
 	</td>
 	</tr>
 
-	</table>
-</div><div ng-repeat="element in tits">
-<div dynamic="element.num"></div>
-</div>
+	<tr ng-repeat="element in forbject">
+	<td dynamic="element.htag"></td>
+	<td dynamic="element.tag"></td>
+	</tr>
 
+	</table>
+</div>
 <!-- AREA DE PARAMETROS PARA BOTONES-->
 <?
 $vistArr = 'hola';
