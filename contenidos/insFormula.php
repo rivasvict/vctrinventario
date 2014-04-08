@@ -82,7 +82,8 @@ $fob3 = "Ingrediente #:";
 	</tr>
 
 	</table>
-</div><div ng-repeat="element in tits" content="element.num" id="dir">{{element.num}}
+</div><div ng-repeat="element in tits">
+<div dynamic="element.num"></div>
 </div>
 
 <!-- AREA DE PARAMETROS PARA BOTONES-->
