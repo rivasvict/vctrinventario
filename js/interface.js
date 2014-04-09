@@ -10,26 +10,29 @@ $scope.addFormula = function(){
 		if(n==10){
 			n = 91;
 		}
-		if(n==101){
+		if(n==990){
 			n = 991;
 		}
-		alert(n);
+		//alert(n);
 	}else{
 		var n = 6;
 	}
-//REVISAR POR QUE NO DEFINE A "NM"
 	if(n==91){
 		var nm = 9;
-		alert("cambie mn a el valor de: " + mn + " cuando n vale: " + n)
 	}else{
 		var nm = n - 1;	
 	}
-	alert("NM FINALMENTE VALE: " + nm);
-	var hth = '<input type="hidden" ng-model="fobject.' + nm + '" ng-init="fobject.' + nm + ' = ' + "'" + 'Ingrediente: ' + "'" + '">';
-	var ht = 'Ingrediente: <input type="text" ng-model="fobject.' + n + '">{{fobject.' + n +'}}';
+	var hth = '<input type="hidden" ng-model="fobject.' + nm + '" ng-init="fobject.' + nm + ' = ' + "'" + 'Ingrediente #' + n + ': ' + "'" + '">';
+	var ht = 'Ingrediente: <input type="text" ng-model="fobject.' + n + '"><input type="button" value=" + " ng-click="addFormula()"><input type="button" value=" - " ng-click="deleteFormula(element)">{{fobject.' + n +'}}';
 	$scope.forbject.push({tag:ht,htag:hth,c:n});
 }
 
+$scope.deleteFormula = function(obj){
+	var oldFor = $scope.forbject;
+	$scope.forbject = [];
+	var index=oldFor.indexOf(obj);
+	oldFor.splice(index,1);
+}
 
 //-------- Funciones para manejo de vistas dinamicas en llenados --------
 
@@ -168,22 +171,37 @@ $scope.addFormula = function(){
 	$scope.oja = {};
 	//fn is variable that is going to carry the edit or insert instruction
 	$scope.assocA = function(fobject,fn){
-	console.log(fobject);
+	//alert("Imprimo aqui");
+	//console.log(fobject);
 		var obj = {};
 		var j = 1;
 		var ja = 0;
+		var ia = 0;
+		//console.log(Object.keys(fobject).length);
 			for(i=1;i<=(Object.keys(fobject).length);i++){
 				if((i % 2) != 0){
 					ja = j + 1;
-					obj[fobject[i]] = fobject[ja];
+					ia = j;
+					if(j == 90){
+						ia = 9;
+					}
+					obj[fobject[ia]] = fobject[ja];
+					//console.log(obj[fobject[i]]);
+					//console.log(obj);
+					//console.log("i = " + i);
+					//console.log("j = " + j);
+					//console.log("ja = " + ja);
+					//console.log(fobject[99]);
+					//console.log("-----------------------------");
 				}
 				if(j==8){
 					j = j + 81;
 				}
 				j += 1;
 			}
-
+	//	console.log(obj);
 		$scope.oja = obj;
+	//	console.log($scope.oja);
 		return $scope.oja;
 	};
 
@@ -221,7 +239,9 @@ $scope.addFormula = function(){
 	};
 
 	$scope.accPrev = function (obj,fn){
+		//console.log(obj);
 		var obj = $scope.nonAssocA(obj);
+		//console.log(obj);
 		var dta = JSON.stringify(obj);
 		$.post(
 				'phpdep/arequest.php',
