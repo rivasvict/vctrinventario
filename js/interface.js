@@ -171,13 +171,12 @@ $scope.deleteFormula = function(obj){
 	$scope.oja = {};
 	//fn is variable that is going to carry the edit or insert instruction
 	$scope.assocA = function(fobject,fn){
-	//alert("Imprimo aqui");
-	//console.log(fobject);
+		console.log(fobject);
+		if(fn=="any"){
 		var obj = {};
 		var j = 1;
 		var ja = 0;
 		var ia = 0;
-		//console.log(Object.keys(fobject).length);
 			for(i=1;i<=(Object.keys(fobject).length);i++){
 				if((i % 2) != 0){
 					ja = j + 1;
@@ -186,22 +185,17 @@ $scope.deleteFormula = function(obj){
 						ia = 9;
 					}
 					obj[fobject[ia]] = fobject[ja];
-					//console.log(obj[fobject[i]]);
-					//console.log(obj);
-					//console.log("i = " + i);
-					//console.log("j = " + j);
-					//console.log("ja = " + ja);
-					//console.log(fobject[99]);
-					//console.log("-----------------------------");
 				}
 				if(j==8){
 					j = j + 81;
 				}
 				j += 1;
 			}
-	//	console.log(obj);
+		}else{
+
+		}
+		console.log(obj);
 		$scope.oja = obj;
-	//	console.log($scope.oja);
 		return $scope.oja;
 	};
 

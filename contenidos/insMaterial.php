@@ -42,6 +42,7 @@ $fob3 = "Código del material: ";
 $fob5 = "Unidad: ";
 $fob7 = "Proposito del material: ";
 $fob9 = "Clasificación del material: ";
+$edition = "any";
 ?>
 <div>
 <form name='form' novalidate>
