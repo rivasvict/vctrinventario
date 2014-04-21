@@ -170,6 +170,25 @@ $scope.deleteFormula = function(obj){
 	//--Function writ() retuns an object ready to be sent to json for database manipulation--
 	$scope.oja = {};
 	//fn is variable that is going to carry the edit or insert instruction
+
+	$scope.nueves = function(number){
+		var str = number.toString();
+		var all = true;
+		for(o=0;o<=str.length - 1;o++){
+			if(str[o]=="9"){
+			}else{
+				all = false;
+				break;
+			}
+		}
+		if(all==true){
+			for(i=0;i<=(o - 1);i++){
+				//setear para devolver numero a sumar entre 8 y 2
+			}
+		}
+		return [all,o];
+	}
+
 	$scope.assocA = function(fobject,fn){
 		if(fn=="any"){
 		var obj = {};
@@ -194,14 +213,16 @@ $scope.deleteFormula = function(obj){
 		}else{
 			var j = 1;
 			var k = 0;
-			for(i=1;i<=30/*(Object.keys(fobject).length)*/;i++){
-				if((j % 3 == 0) && (j % 9 == 0) && (j % 6 != 0) && ((j + 1) % 5 == 0)){
-					console.log(j);
-					j = j + 82;
-				}
+			var ret = $scope.nueves(929999);
+			console.log(ret);
+			//for(i=1;i<=30/*(Object.keys(fobject).length)*/;i++){
+				//if((j % 3 == 0) && (j % 9 == 0) && (j % 6 != 0) && ((j + 1) % 5 == 0)){
+					//console.log(j);
+							//j = j + 82;
+				//}
 				//k = j + 1;
-				j += 1;
-			}
+				//j += 1;
+			//}
 		}
 		console.log(obj);
 		$scope.oja = obj;
