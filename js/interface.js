@@ -174,24 +174,37 @@ $scope.deleteFormula = function(obj){
 	$scope.nueves = function(number){
 		var str = number.toString();
 		var all = true;
+		var nu = "";
+		var nova = "";
+		var sm = 0;
+		//console.log(number + " : " + str.length);
 		for(o=0;o<=str.length - 1;o++){
 			if(str[o]=="9"){
+				if(o != (str.length - 1)){
+					nu = nu + "9";
+				}
 			}else{
 				all = false;
-				break;
+				o = str.length;
 			}
 		}
 		if(all==true){
-			for(i=0;i<=(o - 1);i++){
-				//setear para devolver numero a sumar entre 8 y 2
-			}
+			nova = nu;
+			sum = "8" + nova + "2";
+			sm = parseInt(sum);
+			/*for(i=0;i<=(o - 1);i++){
+				if(i != 0){
+					nu = nu + "9";
+				}
+			}*/
 		}
-		return [all,o];
+		return [all,sm];
+		//console.log([all,number]);
 	}
 
 	$scope.assocA = function(fobject,fn){
-		if(fn=="any"){
 		var obj = {};
+		if(fn=="any"){
 		var j = 1;
 		var ja = 0;
 		var ia = 0;
@@ -213,18 +226,19 @@ $scope.deleteFormula = function(obj){
 		}else{
 			var j = 1;
 			var k = 0;
-			var ret = $scope.nueves(929999);
-			console.log(ret);
-			//for(i=1;i<=30/*(Object.keys(fobject).length)*/;i++){
-				//if((j % 3 == 0) && (j % 9 == 0) && (j % 6 != 0) && ((j + 1) % 5 == 0)){
-					//console.log(j);
-							//j = j + 82;
-				//}
-				//k = j + 1;
-				//j += 1;
-			//}
+		//	var val = 0;
+		//	console.log("initial " + p);
+			for(i=1;i<=(Object.keys(fobject).length);i++){
+				if(j < 5){
+				}
+				if($scope.nueves(j)[0] == true){
+					j = j + $scope.nueves(j)[1];
+				}else{
+					j++;
+				}
+			}
+			console.log(fobject);
 		}
-		console.log(obj);
 		$scope.oja = obj;
 		return $scope.oja;
 	};
