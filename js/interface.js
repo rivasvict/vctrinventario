@@ -4,7 +4,7 @@ var app = angular.module('App', ['ngSanitize'])
 
 $scope.forbject = [];
 $scope.addFormula = function(){
-	if($scope.forbject.length != 0){
+/*	if($scope.forbject.length != 0){
 		//alert($scope.forbject[$scope.forbject.length - 1].c);
 		var n = $scope.forbject[$scope.forbject.length - 1].c + 2;
 		if(n==10){
@@ -21,9 +21,13 @@ $scope.addFormula = function(){
 		var nm = 9;
 	}else{
 		var nm = n - 1;	
+	}*/
+	if($scope.forbject.length != 0){
+		
 	}
-	var hth = '<input type="hidden" ng-model="fobject.' + nm + '" ng-init="fobject.' + nm + ' = ' + "'" + 'Ingrediente #' + n + ': ' + "'" + '">';
-	var ht = 'Ingrediente: <input type="text" ng-model="fobject.' + n + '"><input type="button" value=" + " ng-click="addFormula()"><input type="button" value=" - " ng-click="deleteFormula(element)">{{fobject.' + n +'}}';
+	var id = '<input type="hidden" ng-model="fobject.' + idn1 + '" ng-init="fobject.' + idn1 + ' = ' + "'" + 'Ingrediente #' + n + ': ' + "'" + '">';
+	var name = 'Ingrediente: <input type="text" ng-model="fobject.' + n + '"><input type="button" value=" + " ng-click="addFormula()"><input type="button" value=" - " ng-click="deleteFormula(element)">{{fobject.' + n +'}}';
+	var quantity = 'Ingrediente: <input type="text" ng-model="fobject.' + quantityn2 + '"><input type="button" value=" + " ng-click="addFormula()"><input type="button" value=" - " ng-click="deleteFormula(element)">{{fobject.' + quantityn2 +'}}';
 	$scope.forbject.push({tag:ht,htag:hth,c:n});
 }
 
@@ -171,14 +175,36 @@ $scope.deleteFormula = function(obj){
 	$scope.oja = {};
 	//fn is variable that is going to carry the edit or insert instruction
 
-	$scope.nueves = function(number){
+	$scope.nueves = function(number,lengthNumber){
+		var nu = "";
+		var sum = "";
+		var oldnumber = number;
+		for(i = 0;i<=lenthNumber-1;i++){
+			if(i != (length - 1)){
+				nu = nu + "9";
+			}
+		}
+		sum = "8" + nu + "2";
+		sum = parseInt(sum);
+		number = number + parseInt(sum);
+		return [number,oldnumber,sum];
+	}
+
+	$scope.ceros = function(number){
 		var str = number.toString();
 		var all = true;
 		var nu = "";
 		var nova = "";
 		var sm = 0;
+		var arrayNumber = [];
+		if(str[str.length - 1] == "0"){
+			arrayNumber = ceros nueves(number,parseInt(str.length));
+			return arrayNumber;
+		}else{
+			return [number,0,0]
+		}
 		//console.log(number + " : " + str.length);
-		for(o=0;o<=str.length - 1;o++){
+	/*	for(o=0;o<=str.length - 1;o++){
 			if(str[o]=="9"){
 				if(o != (str.length - 1)){
 					nu = nu + "9";
@@ -191,15 +217,15 @@ $scope.deleteFormula = function(obj){
 		if(all==true){
 			nova = nu;
 			sum = "8" + nova + "2";
-			sm = parseInt(sum);
+			sm = parseInt(sum);*/
 			/*for(i=0;i<=(o - 1);i++){
 				if(i != 0){
 					nu = nu + "9";
 				}
 			}*/
-		}
+		/*}
 		return [all,sm];
-		//console.log([all,number]);
+		//console.log([all,number]);*/
 	}
 
 	$scope.assocA = function(fobject,fn){
@@ -231,6 +257,7 @@ $scope.deleteFormula = function(obj){
 			for(i=1;i<=(Object.keys(fobject).length);i++){
 				if(j < 5){
 				}
+//-----------------------CAMBIAR CON NUEVO ESQUEMA DE NUEVE Y CERO FUNCION--------------------
 				if($scope.nueves(j)[0] == true){
 					j = j + $scope.nueves(j)[1];
 				}else{
