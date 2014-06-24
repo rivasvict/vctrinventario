@@ -1,7 +1,7 @@
 <?
 
-include 'php/db/SQL.php';
-include 'php/db/bdConex.php';
+include '../db_handlers/bdConex.php';
+include '../db_handlers/SQL.php';
 
 class material{
 
@@ -69,7 +69,7 @@ class material{
 		}
 		$q = new SQL;
 		$s = $q->sqlSelect($select,'material','');
-		$s = mysqlOdriver::query($s);
+		$s = @mysqlOdriver::query($s);
 		//var_dump($s);
 		return $s;
 	}
