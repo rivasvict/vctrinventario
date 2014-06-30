@@ -1,6 +1,6 @@
 var app = angular.module('sys');
 
-app.service('helpers',function(){
+app.service('helpers',function(json_query){
 
 	this.formAction = {
 		eMessages : {
@@ -31,6 +31,14 @@ app.service('helpers',function(){
 				$('#nmerror,.error').hide();
 				return true;
 			}	
+		},
+		not_repeat	:	function(obj,finder,string){
+			var repeated = json_query.select_value(obj,finder,string);
+			if(repeated === true){
+				console.log('repeated value');
+			}else{
+				console.log('well done!');
+			}
 		}
 	};
 });
@@ -54,4 +62,19 @@ app.service('dataSource',function(){
 			this.materiales = JSON.parse(json_string);
 		}
 	}
+
 });
+
+app.service('json_query',function(){
+	this.select_value = function(object,selectby,string){
+		for(var i = 0;i < object.length;i++){
+			if(object[i][selectby] === string){
+				return true;
+			}else if(i === object.length -1){
+				return false;
+			}
+		}
+	};
+});
+
+
