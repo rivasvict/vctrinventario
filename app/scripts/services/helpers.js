@@ -10,35 +10,33 @@ app.service('helpers',function(json_query){
 				invalidChar	: 'Caracter invalido'
 			},
 			bdError	:	{
-				repeated		: 'Este valor se encuentra reetido en la base de datos, por favor escoja uno nuevo'
+				repeated		: 'Este valor se encuentra repetido en la base de datos, por favor escoja uno nuevo'
 			}
 		}
 	};
 
 	this.validators = {
+		eMessage_renderer	:	function(pointer,valResult,message){
+			if(valResult === true){
+				$('#'+pointer+'.error').text(message).show();
+				return false;
+			}else{
+				$('#'+pointer+'.error').text('').hide();
+				return true;
+			}
+		},
 		not_null : function(field){
 			if(field===''){
 				return false;
 			}	
 		},
 		only_numbers : function(field,message){
-			if(isNaN(field) === true){
-				$('#nmerror,.error').text(message);
-				$('#nmerror,.error').show();
-				return false;
-			}else{
-				$('#nmerror,.error').text('');
-				$('#nmerror,.error').hide();
-				return true;
-			}	
+			var nan = isNaN(field);
+			this.eMessage_renderer('nmerror',nan,message);
 		},
-		not_repeat	:	function(obj,finder,string){
+		not_repeat	:	function(obj,finder,string,message){
 			var repeated = json_query.select_value(obj,finder,string);
-			if(repeated === true){
-				console.log('repeated value');
-			}else{
-				console.log('well done!');
-			}
+			this.eMessage_renderer('cmerror',repeated,message);
 		}
 	};
 });
@@ -76,5 +74,3 @@ app.service('json_query',function(){
 		}
 	};
 });
-
-
