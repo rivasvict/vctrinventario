@@ -1,5 +1,11 @@
 var app = angular.module('sys');
 
 app.controller('matCtrl', function ($scope,helpers,dataSource,$routeParams) {
-	console.log(dataSource.materiales);
+	$scope.material_t = dataSource.materiales;
+
+	$scope.validate = function(validationType){
+	};
+
+	$scope.sendData = function(){
+	}
 });
