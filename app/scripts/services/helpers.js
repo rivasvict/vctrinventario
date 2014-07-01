@@ -1,6 +1,6 @@
 var app = angular.module('sys');
 
-app.service('helpers',function(json_query){
+app.service('helpers',function(json_query,dataSource){
 
 	this.formAction = {
 		eMessages : {
@@ -19,7 +19,7 @@ app.service('helpers',function(json_query){
 		eMessage_renderer	:	function(pointer,valResult,message){
 			if(valResult === true){
 				$('#'+pointer+'.error').text(message).show();
-				return false;
+				return valResult;
 			}else{
 				$('#'+pointer+'.error').text('').hide();
 				return true;
@@ -27,7 +27,7 @@ app.service('helpers',function(json_query){
 		},
 		not_null : function(field){
 			if(field===''){
-				return false;
+				return valResult;
 			}	
 		},
 		only_numbers : function(field,message){
@@ -39,6 +39,38 @@ app.service('helpers',function(json_query){
 			return this.eMessage_renderer('cmerror',repeated,message);
 		},
 		only_letters	:	function(field,message){
+			//var lete = isNaN(field);
+			var lete = function(){
+				if(field){
+					for(var i = 0;i<field.length;i++){
+						if(isNaN(field[i]) === false){
+							return true;
+						}
+					}
+				}
+				return false;
+			};
+			return this.eMessage_renderer('lmerror',lete(),message);
 		}
 	};
+
+	this.validTrigger = function(validationType,model,db_pointer){
+
+		var $validate = this.validators;
+		var $eMessage	=	this.formAction.eMessages;
+
+		if(validationType === 'not_repeat'){
+			$validate.not_repeat(dataSource.materiales,db_pointer,model,$eMessage.bdError.repeated);
+		}
+
+		else if(validationType === 'only_letters'){
+			$validate.only_letters(model,$eMessage.typeError.onlyLetters);
+		}
+
+		else if(validationType === 'only_numbers'){
+			$validate.only_numbers(model,$eMessage.typeError.onlyNumbers);
+		}
+
+	}
+
 });
