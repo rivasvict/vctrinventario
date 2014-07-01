@@ -6,6 +6,10 @@
 		<span>Codigo del material: </span>
 		<input type='text' id="Codigo_material" placeholder="Inserte el codigo de su material" ng-change="validate('not_repeat');validate('not_null')" ng-model="f.cm" required>
 		<span class="error" id="cmerror"></span>
+		<span>Codigo del material: </span>
+		<input type='text' id="Peso" placeholder="Inserte el peso de su material" ng-change="validate('only_numbers');validate('not_null')" ng-model="f.pm" required>
+		<span class="error" id="numerror"></span>
+
 		<button ng-click="sendData()" ng-disabled="form.$invalid">Aceptar</button>
 	</form>
 </section>

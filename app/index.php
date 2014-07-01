@@ -68,6 +68,8 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/router.js"></script>
+				<script src="scripts/services/dbSource.js"></script>
+				<script src="scripts/services/json_bd_handler.js"></script>
 				<script src="scripts/services/helpers.js"></script>
         <script src="scripts/controllers/main.js"></script>
 				<script src="scripts/controllers/material.js"></script>

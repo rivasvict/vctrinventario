@@ -32,45 +32,14 @@ app.service('helpers',function(json_query){
 		},
 		only_numbers : function(field,message){
 			var nan = isNaN(field);
-			this.eMessage_renderer('nmerror',nan,message);
+			return this.eMessage_renderer('numerror',nan,message);
 		},
 		not_repeat	:	function(obj,finder,string,message){
 			var repeated = json_query.select_value(obj,finder,string);
-			this.eMessage_renderer('cmerror',repeated,message);
-		}
-	};
-});
-
-app.service('dataSource',function(){
-	this.select_from_database = function(table){
-		var url = 'php/server_requests/a_call.php';
-		$.post(url,
-			{target_table : table},
-			function(data){
-				$('#a_call').html(data);
-			}
-		);
-	};
-
-	this.build_table = function(data,target){
-
-		var json_string = JSON.stringify(data);
-
-		if(target === 'material'){
-			this.materiales = JSON.parse(json_string);
-		}
-	}
-
-});
-
-app.service('json_query',function(){
-	this.select_value = function(object,selectby,string){
-		for(var i = 0;i < object.length;i++){
-			if(object[i][selectby] === string){
-				return true;
-			}else if(i === object.length -1){
-				return false;
-			}
+			return this.eMessage_renderer('cmerror',repeated,message);
+		},
+		not_letter	:	function(){
+			
 		}
 	};
 });
