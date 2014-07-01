@@ -71,6 +71,7 @@
 				<script src="scripts/services/dbSource.js"></script>
 				<script src="scripts/services/json_bd_handler.js"></script>
 				<script src="scripts/services/helpers.js"></script>
+				<script src="scripts/services/objects.js"></script>
         <script src="scripts/controllers/main.js"></script>
 				<script src="scripts/controllers/material.js"></script>
         <!-- endbuild -->

@@ -22,7 +22,7 @@ app.service('helpers',function(json_query,dataSource){
 				return valResult;
 			}else{
 				$('#'+pointer+'.error').text('').hide();
-				return true;
+				return valResult;
 			}
 		},
 		not_null : function(field){
