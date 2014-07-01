@@ -34,12 +34,11 @@ app.service('helpers',function(json_query){
 			var nan = isNaN(field);
 			return this.eMessage_renderer('numerror',nan,message);
 		},
-		not_repeat	:	function(obj,finder,string,message){
-			var repeated = json_query.select_value(obj,finder,string);
+		not_repeat	:	function(obj,pointer_query,string,message){
+			var repeated = json_query.select_value(obj,pointer_query,string);
 			return this.eMessage_renderer('cmerror',repeated,message);
 		},
-		not_letter	:	function(){
-			
+		only_letters	:	function(field,message){
 		}
 	};
 });

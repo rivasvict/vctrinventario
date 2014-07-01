@@ -5,14 +5,23 @@ app.controller('matCtrl', function ($scope,helpers,dataSource,$location) {
 	if(!dataSource.materiales){
 		$location.path('/');
 	}
+
+	var $validate = helpers.validators;
+	var $eMessage	=	helpers.formAction.eMessages;
+
 	$scope.material_t = dataSource.materiales;
 
 	$scope.validate = function(validationType){
+
 		if(validationType === 'not_repeat'){
-			helpers.validators.not_repeat(dataSource.materiales,'Codigo_del_material',$scope.f.cm,helpers.formAction.eMessages.bdError.repeated);
-		}else if(validationType === 'only_numbers'){
-			helpers.validators.only_letters($scope.f.pm,helpers.formAction.eMessages.typeError.onlyNumbers);
+			var pointer = 'Codigo_del_material';
+			$validate.not_repeat(dataSource.materiales,pointer,$scope.f.cm,$eMessage.bdError.repeated);
 		}
+
+		else if(validationType === 'only_letters'){
+			$validate.only_letters($scope.f.pm,$eMessage.typeError.onlyNumbers);
+		}
+
 	};
 
 	$scope.sendData = function(){
