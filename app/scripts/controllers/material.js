@@ -10,8 +10,8 @@ app.controller('matCtrl', function ($scope,selects,helpers,dataSource,$location)
 
 	$scope.material_t = dataSource.materiales;
 
-	$scope.validate = function(validationType,model,db_pointer){
-		helpers.validTrigger(validationType,model,db_pointer);
+	$scope.validate = function(validationType,model,db_pointer,db_table){
+		helpers.validTrigger(validationType,model,db_pointer,db_table);
 	};
 
 	$scope.sendData = function(){

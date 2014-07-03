@@ -1,12 +1,17 @@
+<?
+//configuration
+if(){}
+?>
+
 <section id="">
 	<form novalidate name="form">
 
 		<span>Nombre del material: </span>
-		<input type='text' id="Nombre_material" placeholder="Inserte el nombre de su material" ng-model="f.nm" required>
+		<input type='text' id="nOrder" placeholder="Inserte el numero de orden de produccion" ng-model="f.nm" ng-change="validate('only_numbers');validate('not_repeat',f.on,'Numero_orden','ordenes_produccion')" required>
 		<span class="error" id="nullerror"></span>
 
 		<span>Codigo del material: </span>
-		<input type='text' id="Codigo_material" placeholder="Inserte el codigo de su material" ng-change="validate('not_repeat',f.cm,'Codigo_del_material');validate('not_null')" ng-model="f.cm" required>
+		<input type='text' id="Codigo_material" placeholder="Inserte el codigo de su material" ng-change="validate('not_repeat',f.cm,'Codigo_del_material','materiales');validate('not_null')" ng-model="f.cm" required>
 		<span class="error" id="cmerror"></span>
 
 		<span>Unidad: </span>

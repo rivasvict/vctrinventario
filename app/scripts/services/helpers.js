@@ -54,13 +54,13 @@ app.service('helpers',function(json_query,dataSource){
 		}
 	};
 
-	this.validTrigger = function(validationType,model,db_pointer){
+	this.validTrigger = function(validationType,model,db_pointer,table){
 
 		var $validate = this.validators;
 		var $eMessage	=	this.formAction.eMessages;
 
 		if(validationType === 'not_repeat'){
-			$validate.not_repeat(dataSource.materiales,db_pointer,model,$eMessage.bdError.repeated);
+			$validate.not_repeat(dataSource[table],db_pointer,model,$eMessage.bdError.repeated);
 		}
 
 		else if(validationType === 'only_letters'){
