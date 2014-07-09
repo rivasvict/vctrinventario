@@ -18,5 +18,8 @@ app.service('dataSource',function(){
 		if(target === 'material'){
 			this.materiales = JSON.parse(json_string);
 		}
+		if(target === 'ordenes_produccion'){
+			this.ordenes_produccion = JSON.parse(json_string);
+		}
 	}
 });

@@ -1,0 +1,79 @@
+<?
+
+/*include '../db_handlers/bdConex.php';
+include '../db_handlers/SQL.php';*/
+
+class order{
+
+/*	private $Nombre_del_material;
+	protected $Codigo_del_material;
+	protected $Unidad;
+	protected $Proposito_del_material;
+	protected $Clasificacion_del_material;
+
+	public function createMaterial($obj){
+		$v0 = "0";
+		$v1 = "1";
+		$v2 = "2";
+		$v3 = "3";
+		$v4 = "4";
+		$this->Nombre_del_material = $obj->$v0;
+		$this->Codigo_del_material = $obj->$v1;
+		$this->Unidad = $obj->$v2;
+		$this->Proposito_del_material = $obj->$v3;
+		$this->Clasificacion_del_material = $obj->$v4;
+	}
+
+	public function insertMaterial() {
+		$q = new SQL;
+		$s = $q->sqlInsert('material',[
+						Nombre_del_material,
+						Codigo_del_material,
+						Unidad,
+						Proposito_del_material,
+						Clasificacion_del_material
+					],
+					[
+						"'".$this->Nombre_del_material."'",
+						"'".$this->Codigo_del_material."'",
+						"'".$this->Unidad."'",
+						"'".$this->Proposito_del_material."'",
+						"'".$this->Clasificacion_del_material."'"
+					]);
+		@mysqlOdriver::query($s);
+	}
+
+	public function updateMaterial(){
+		$q = new SQL;
+		$s = $q->sqlUpdate('material',[
+						Nombre_del_material.' = "'.$this->Nombre_del_material.'"',
+						Codigo_del_material.' = "'.$this->Codigo_del_material.'"',
+						Unidad.' = "'.$this->Unidad.'"',
+						Proposito_del_material.' = "'.$this->Proposito_del_material.'"',
+						Clasificacion_del_material.' = "'.$this->Clasificacion_del_material.'"'],	
+						Codigo_del_material.' = "'.$this->Codigo_del_material.'"'
+						);
+		@mysqlOdriver::query($s);
+	}
+
+	public function dropMaterial($id){
+		$sql = "DELETE from material where Codigo_del_material = '".$id."'";
+		@mysqlOdriver::query($sql);
+	}
+*/
+	public function selectOrder($table,$params){
+		if($params=="n"){
+			$select = "*";
+		}else{
+
+		}
+		$q = new SQL;
+		$s = $q->sqlSelect($select,'ordenes_produccion','');
+		$s = @mysqlOdriver::query($s);
+		//var_dump($s);
+		return $s;
+	}
+
+}
+
+?>

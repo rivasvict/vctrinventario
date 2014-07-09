@@ -59,7 +59,7 @@ app.service('helpers',function(json_query,dataSource){
 		var $validate = this.validators;
 		var $eMessage	=	this.formAction.eMessages;
 
-		if(validationType === 'not_repeat'){
+		if(validationType === 'not_repeat'){console.log(db_pointer);
 			$validate.not_repeat(dataSource[table],db_pointer,model,$eMessage.bdError.repeated);
 		}
 
