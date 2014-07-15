@@ -12,11 +12,16 @@
 		<span>Producto a fabricar: </span>
 		<select id="product">
 		</select>
-		<input type='text' id="product" placeholder="Inserte el producto a fabricar" ng-model="f.on" ng-change="validate('not_repeat',f.on,'Codigo_orden_produccion','ordenes_produccion')" required>
+
+		<span>Cantidad a fabricar: </span>
+		<input type='text' id="cuantity" placeholder="Inserte la cantidad a fabricar" ng-model="f.on" ng-change="validate('not_repeat',f.on,'Codigo_orden_produccion','ordenes_produccion')" required>
+		<span class="error" id="cmerror"></span>
+	
+		<span>Fecha de inicio: </span>
+		<input type='text' id="cuantity" placeholder="Inserte la cantidad a fabricar" ng-model="f.on" ng-change="validate('not_repeat',f.on,'Codigo_orden_produccion','ordenes_produccion')" required>
 		<span class="error" id="cmerror"></span>
 
-
-		<!--<span>Seleccione producto: </span>
+	<!--<span>Seleccione producto: </span>
 		<input type='text' id="Nombre_de_producto" placeholder="Inserte el codigo de su material" ng-change="validate('not_repeat',f.cm,'Codigo_del_material','materiales');validate('not_null')" ng-model="f.cm" required>
 		<span class="error" id="cmerror"></span>
 
