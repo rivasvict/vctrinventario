@@ -12,6 +12,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/angular-pickadate/src/angular-pickadate.css">
     <!-- endbuild -->
   </head>
   <body>
@@ -62,6 +63,8 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-pickadate/src/angular-pickadate.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
 

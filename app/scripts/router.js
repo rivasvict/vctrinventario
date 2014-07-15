@@ -13,7 +13,8 @@ var app = angular
     'ngAnimate',
     'ngCookies',
     'ngRoute',
-    'ngSanitize'
+    'ngSanitize',
+		'pickadate'
   ]);
 
 app.config(function ($routeProvider) {
